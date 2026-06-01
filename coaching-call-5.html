@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIW · Coaching Call 5 · Foundation Pt.2 · The Mechanism</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,700;1,900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#050505;--bg-mid:#0d0d0d;
+    --accent:oklch(0.90 0.19 96);--accent-deep:oklch(0.74 0.19 92);--accent-light:#ffffff;
+    --ink:#ffffff;--ink-dim:oklch(0.82 0.006 80);--ink-mute:oklch(0.58 0.008 80);--ink-faint:oklch(0.40 0.008 80);
+    --rule:oklch(0.22 0.005 80);
+    --hero:"Saira Condensed","Oswald","Antonio",system-ui,sans-serif;
+    --display:"Saira Condensed","Oswald",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{
+    height:100%;
+    color:var(--ink);
+    font-family:var(--display);
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(ellipse 70% 80% at 78% 50%, #161616 0%, #0a0a0a 55%, #050505 92%),
+      var(--bg-deep);
+  }
+  .stars{
+    position:fixed;inset:0;width:100%;height:100%;
+    z-index:0;pointer-events:none;
+    filter:drop-shadow(0 0 6px oklch(0.90 0.19 96 / 0.55));
+  }
+  .stars path,.stars use{fill:#ffffff;opacity:.55;}
+  .grain{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9  0 0 0 0 0.9  0 0 0 0 0.9  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.45'/></svg>");
+    background-size:240px 240px;mix-blend-mode:overlay;opacity:.08;
+  }
+  .vignette{
+    position:fixed;inset:0;z-index:2;pointer-events:none;
+    background:radial-gradient(ellipse 100% 80% at 50% 50%, transparent 50%, rgba(0,0,0,0.55) 100%);
+  }
+  #deck{position:relative;z-index:10;height:100vh;width:100vw;}
+  .slide{
+    position:absolute;inset:0;
+    display:none;flex-direction:column;justify-content:center;
+    padding:5.5vh 8vw 9vh;
+    opacity:0;transform:translateY(14px);
+    transition:opacity .5s ease, transform .5s ease;
+    overflow:hidden;
+  }
+  .slide.active{display:flex;opacity:1;transform:translateY(0);}
+
+  .kicker{
+    display:inline-flex;align-items:center;gap:14px;
+    font-family:var(--mono);
+    font-size:clamp(.78rem,1.05vw,1rem);
+    font-weight:600;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:var(--accent-light);
+    margin-bottom:1.6rem;
+  }
+  .kicker::before{
+    content:'';
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent-light);
+    box-shadow:0 0 10px oklch(0.90 0.19 96 / .65);
+    flex:none;
+  }
+
+  h1{
+    font-family:var(--hero);
+    font-weight:900;
+    font-size:clamp(3rem,7.5vw,6.4rem);
+    line-height:.94;
+    letter-spacing:-.025em;
+    text-transform:uppercase;
+    color:var(--ink);
+    text-wrap:balance;
+  }
+  h1 .g{color:var(--accent);}
+  h2{
+    font-family:var(--hero);
+    font-weight:900;
+    font-size:clamp(2rem,4.6vw,3.6rem);
+    line-height:1;
+    letter-spacing:-.01em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:.3rem;
+    text-wrap:balance;
+  }
+  h2 .g{color:var(--accent);}
+  h2.g{color:var(--accent);}
+
+  .lead{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(1rem,1.55vw,1.4rem);
+    line-height:1.42;
+    color:var(--ink-dim);
+    max-width:62ch;
+    margin-top:1rem;
+    text-wrap:pretty;
+  }
+  .lead b{color:var(--ink);font-weight:700;}
+
+  .sub{
+    font-family:var(--mono);
+    font-size:clamp(.66rem,.8vw,.78rem);
+    font-weight:500;
+    letter-spacing:.32em;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    margin-top:1.3rem;
+  }
+
+  .tape{
+    font-family:var(--mono);
+    font-size:clamp(.66rem,.82vw,.8rem);
+    font-weight:500;
+    letter-spacing:.32em;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    margin-top:1.3rem;
+  }
+
+  ul{
+    list-style:none;
+    margin-top:1.4rem;
+    display:flex;flex-direction:column;gap:.85rem;
+    max-width:70ch;
+  }
+  li{
+    display:flex;gap:1rem;align-items:flex-start;
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(.95rem,1.45vw,1.3rem);
+    color:var(--ink-dim);
+    line-height:1.32;
+  }
+  li .n{
+    font-family:var(--mono);
+    color:var(--accent);
+    font-weight:700;
+    font-size:.9em;
+    flex:none;width:1.9em;
+    padding-top:.15em;
+  }
+  li b{font-weight:700;color:var(--ink);}
+
+  .grid{display:grid;gap:1rem;margin-top:1.5rem;}
+  .grid.two{grid-template-columns:repeat(2,1fr);}
+  .grid.three{grid-template-columns:repeat(3,1fr);}
+
+  .card{
+    background:rgba(255,255,255,0.02);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--accent-light);
+    padding:1.2rem 1.35rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .card h3{
+    font-family:var(--hero);
+    font-weight:900;
+    font-size:clamp(1.05rem,1.4vw,1.35rem);
+    line-height:1;
+    letter-spacing:-.005em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:.45rem;
+  }
+  .card p{
+    font-family:var(--display);
+    font-weight:500;
+    color:var(--ink-dim);
+    font-size:.95rem;
+    line-height:1.36;
+  }
+  .card p b{color:var(--ink);font-weight:700;}
+  .card .tag{
+    font-family:var(--mono);
+    font-size:.62rem;
+    font-weight:600;
+    letter-spacing:.32em;
+    color:var(--accent-light);
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:.55rem;
+  }
+
+  .flow{
+    display:flex;align-items:center;flex-wrap:wrap;
+    gap:.55rem;
+    margin-top:1.8rem;
+  }
+  .step{
+    background:rgba(255,255,255,0.03);
+    border:1px solid oklch(0.30 0.005 80);
+    padding:.75rem 1rem;
+    font-family:var(--mono);
+    font-size:.78rem;
+    font-weight:500;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .step b{color:var(--accent);font-weight:700;}
+  .arr{
+    color:var(--accent);
+    font-size:1.1rem;
+    font-family:var(--mono);
+  }
+
+  .quote{
+    font-family:var(--hero);
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(1.4rem,3vw,2.4rem);
+    line-height:1.25;
+    max-width:24ch;
+    color:var(--ink);
+    margin-top:.7rem;
+    text-wrap:balance;
+  }
+  .quote .g{
+    color:var(--accent);
+    font-style:normal;
+    font-weight:900;
+  }
+
+  .law{
+    border:1px dashed var(--accent);
+    background:oklch(0.90 0.19 96 / .05);
+    padding:1.4rem 1.6rem;
+    margin-top:1.5rem;
+    max-width:60ch;
+  }
+  .law .t{
+    font-family:var(--mono);
+    font-size:.68rem;
+    font-weight:600;
+    letter-spacing:.32em;
+    color:var(--accent-light);
+    text-transform:uppercase;
+    margin-bottom:.6rem;
+  }
+  .law .b{
+    font-family:var(--hero);
+    font-weight:900;
+    font-size:clamp(1.3rem,2.8vw,2.1rem);
+    text-transform:uppercase;
+    line-height:1.05;
+    color:var(--ink);
+    letter-spacing:-.005em;
+  }
+  .law .b span{color:var(--accent);}
+
+  .when{
+    font-family:var(--mono);
+    font-size:.66rem;
+    font-weight:600;
+    color:var(--accent-light);
+    letter-spacing:.28em;
+    margin-top:.5rem;
+    display:block;
+    text-transform:uppercase;
+  }
+
+  .stages{
+    display:flex;flex-wrap:wrap;
+    gap:.5rem;
+    margin-top:1.6rem;
+    align-items:center;
+  }
+  .stage{
+    border:1px solid var(--rule);
+    background:rgba(255,255,255,0.02);
+    padding:.75rem .95rem;
+    font-family:var(--display);
+    font-size:.95rem;
+    font-weight:500;
+    color:var(--ink-dim);
+    min-width:9.5em;
+  }
+  .stage b{
+    color:var(--accent-light);
+    font-weight:700;
+    display:block;
+    font-family:var(--mono);
+    font-size:.62rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    margin-bottom:.3rem;
+  }
+
+  .twocol{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2.4rem;
+    margin-top:1.3rem;
+  }
+  .twocol h4{
+    font-family:var(--mono);
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--accent-light);
+    margin-bottom:.85rem;
+  }
+  .twocol ul{margin-top:0;gap:.6rem;}
+
+  .vs{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:1.2rem;
+    align-items:center;
+    margin-top:1.5rem;
+  }
+  .vs .mid{
+    font-family:var(--hero);
+    font-weight:900;
+    color:var(--accent);
+    font-size:clamp(1.4rem,2.4vw,2rem);
+    text-align:center;
+  }
+
+  .math{
+    font-family:var(--mono);
+    font-weight:500;
+    margin-top:1.6rem;
+    font-size:clamp(1rem,1.7vw,1.45rem);
+    line-height:1.8;
+    color:var(--ink);
+  }
+  .math .g{
+    color:var(--accent);
+    font-weight:700;
+  }
+
+  footer{
+    position:fixed;
+    bottom:0;left:0;right:0;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1rem 2rem;
+    font-family:var(--mono);
+    font-size:clamp(.62rem,.78vw,.74rem);
+    font-weight:500;
+    letter-spacing:.32em;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    z-index:30;
+  }
+  .badge{display:flex;align-items:center;gap:.7rem;}
+  .badge .dot{
+    width:24px;height:24px;border-radius:50%;
+    background:var(--accent-light);
+    color:#000;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--hero);
+    font-weight:900;
+    font-size:.72rem;
+    letter-spacing:0;
+  }
+
+  .progress{
+    position:fixed;top:0;left:0;
+    height:3px;background:var(--accent);
+    z-index:40;transition:width .4s ease;
+    box-shadow:0 0 16px oklch(0.90 0.19 96 / .45);
+  }
+  .nav{
+    position:fixed;bottom:.9rem;right:2rem;
+    display:flex;gap:.5rem;
+    z-index:40;
+  }
+  .nav button{
+    background:transparent;
+    border:1px solid var(--rule);
+    color:var(--ink);
+    width:36px;height:36px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:.2s;
+    font-family:var(--mono);
+  }
+  .nav button:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<svg class="stars" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <path id="s" d="M0,-12 L3,-3 L12,0 L3,3 L0,12 L-3,3 L-12,0 L-3,-3 Z"/>
+  </defs>
+  <use href="#s" x="140" y="120"/>
+  <use href="#s" x="320" y="780"/>
+  <use href="#s" x="540" y="260"/>
+  <use href="#s" x="780" y="940"/>
+  <use href="#s" x="980" y="160"/>
+  <use href="#s" x="1180" y="640"/>
+  <use href="#s" x="1380" y="220"/>
+  <use href="#s" x="1500" y="860"/>
+  <use href="#s" x="1720" y="380"/>
+  <use href="#s" x="1820" y="720"/>
+</svg>
+<div class="grain"></div>
+<div class="vignette"></div>
+
+<div class="progress" id="bar"></div>
+<div id="deck">
+
+  <!-- 1 TITLE -->
+  <section class="slide active">
+    <div class="kicker">Foundation · Session 2 of 2</div>
+    <h1>The <span class="g">Mechanism</span><br>The Blueprint</h1>
+    <p class="lead">Monday you picked your niche, did the research, and packaged the offer. Today: the mechanism. The blueprint we use to justify the price and turn a "website" into something worth thousands.</p>
+    <span class="tape">AIW · AI Web Design Agency</span>
+  </section>
+
+  <!-- 2 RECAP -->
+  <section class="slide">
+    <div class="kicker">Quick recap</div>
+    <h2>Where we <span class="g">left off</span></h2>
+    <ul>
+      <li><span class="n">→</span><span>You chose a <b>high-ticket niche</b> and found where they hang out.</span></li>
+      <li><span class="n">→</span><span>You did the research and learned they want <b>trust &amp; customers</b>, not a website.</span></li>
+      <li><span class="n">→</span><span>You can put a <b>live homepage + proposal</b> in front of them for ~$5.</span></li>
+    </ul>
+    <p class="lead">Now the question that decides your income: <b>why should they pay you premium?</b></p>
+  </section>
+
+  <!-- 3 THE PROBLEM -->
+  <section class="slide">
+    <div class="kicker">The trap</div>
+    <h2>Selling "websites" =<br><span class="g">commodity</span></h2>
+    <p class="lead">If you sell a website, you compete with every freelancer, template and $500 cousin-with-a-laptop. The only lever left is price, and that's a race to the bottom.</p>
+    <span class="sub">A commodity competes on price. A mechanism competes on value.</span>
+  </section>
+
+  <!-- 4 TRUST RECESSION -->
+  <section class="slide">
+    <div class="kicker">The real problem in the niche</div>
+    <h2>The <span class="g">trust recession</span></h2>
+    <p class="lead">In most niches every business says the exact same thing. "Locally owned, 5-star, family operated, certified." They've commoditised themselves.</p>
+    <div class="quote">When they all sound the same,<br>the customer chooses on <span class="g">price.</span></div>
+    <span class="sub">Roofing is the example. The pattern repeats in almost every niche.</span>
+  </section>
+
+  <!-- 5 THE REFRAME -->
+  <section class="slide">
+    <div class="kicker">The reframe</div>
+    <h2>You sell the<br><span class="g">trust of the customer</span></h2>
+    <p class="lead">Your #1 job isn't design or code. It's to help the business <b>win the trust of their customer so they get chosen every time</b>, and stop competing on price.</p>
+    <div class="vs">
+      <div class="card"><span class="tag">What they hear</span><h3>"A website"</h3><p>A cost. A nice-to-have.</p></div>
+      <div class="mid">→</div>
+      <div class="card"><span class="tag">What you deliver</span><h3>Chosen every time</h3><p>An asset that wins jobs.</p></div>
+    </div>
+  </section>
+
+  <!-- 6 THE MECHANISM -->
+  <section class="slide">
+    <div class="kicker">What the blueprint is</div>
+    <h2>The <span class="g">mechanism</span></h2>
+    <p class="lead">It's not the fact that you "do web design." It's that you deliver value through a specific strategy. That strategy, documented, is the blueprint.</p>
+    <ul>
+      <li><span class="n">→</span><span>A <b>repeatable strategy</b> uncovered in your research, not a one-off design.</span></li>
+      <li><span class="n">→</span><span>Backed by <b>results you can show</b> on screen.</span></li>
+      <li><span class="n">→</span><span>Makes you a <b>specialist</b>, not a generic designer.</span></li>
+    </ul>
+  </section>
+
+  <!-- 7 BLUEPRINT MADE TANGIBLE -->
+  <section class="slide">
+    <div class="kicker">From strategy to something they can see</div>
+    <h2>Make the blueprint<br><span class="g">tangible</span></h2>
+    <p class="lead">The strategy doc you built in the research phase becomes two things they can actually look at, and the proposal is what <i>sells</i> the blueprint.</p>
+    <div class="flow">
+      <span class="step"><b>Strategy doc</b></span><span class="arr">→</span>
+      <span class="step"><b>Live homepage</b> (~$5, Website Factory)</span><span class="arr">→</span>
+      <span class="step"><b>Proposal</b> that sells the strategy</span>
+    </div>
+    <p class="lead" style="margin-top:1.3rem;font-size:1.05rem;">The proposal isn't the strategy. It's the strategy <b>wrapped in sales</b>: removing risk, what they get, and how you deliver it with your blueprint.</p>
+  </section>
+
+  <!-- 8 VALUE NOT TIME -->
+  <section class="slide">
+    <div class="kicker">Why the price holds</div>
+    <h2>Value for money,<br>not <span class="g">time</span> for money</h2>
+    <p class="lead">A freelancer sells hours. A niche specialist with a proven mechanism sells an outcome. That's why the same deliverable can be $3k or $8k. The difference is the mechanism behind it.</p>
+    <div class="law">
+      <div class="t">The shift</div>
+      <div class="b">Stop selling your time.<br>Start selling the <span>result.</span></div>
+    </div>
+    <span class="sub">AI changed the game. Anyone can spin up a site. Price fair ($3k to $8k), win on the mechanism, play volume.</span>
+  </section>
+
+  <!-- 9 PRICE = VALUE OF SOLVING -->
+  <section class="slide">
+    <div class="kicker">How you find the number</div>
+    <h2>Price = the value of<br><span class="g">solving the problem</span></h2>
+    <p class="lead">You don't pull a price from the air. On the call you learn how much they make and what a customer is worth, so you can size the value of solving their problem, then price against that.</p>
+    <div class="math">
+      What's a new client <span class="g">worth</span> to them?<br>
+      <span class="g">×</span> how many your blueprint can win<br>
+      <span class="g">=</span> the value you create <span class="g">≫</span> your fee.
+    </div>
+    <span class="sub">"I charge $5 to $7k because the value I bring is worth far more than that."</span>
+  </section>
+
+  <!-- 10 ROI MATH -->
+  <section class="slide">
+    <div class="kicker">Make the price obvious</div>
+    <h2>The <span class="g">ROI</span> math</h2>
+    <p class="lead">High-ticket B2C is the cheat code: one or two extra jobs pays for the entire project. Do the math <i>with</i> them, on their numbers.</p>
+    <div class="math">
+      Avg job value <span class="g">×</span> a few extra jobs<br>
+      <span class="g">=</span> your fee paid back fast<br>
+      <span class="g">→</span> everything after is profit for them.
+    </div>
+    <span class="sub">When the return dwarfs the price, the price stops being the conversation.</span>
+  </section>
+
+  <!-- 11 THE TWO CALL CLOSE -->
+  <section class="slide">
+    <div class="kicker">The vehicle · beginner-friendly</div>
+    <h2>The <span class="g">two-call</span> close</h2>
+    <p class="lead">The simplest, most ethical way to sell: you don't pitch, you consult. Two calls, and you sell their own problem back to them as the solution.</p>
+    <div class="grid two">
+      <div class="card"><span class="tag">Call 1</span><h3>Discovery</h3><p>Ask the right questions. Find their goal and their problem. Then: "I'll go research and come back with a solution."</p></div>
+      <div class="card"><span class="tag">Call 2</span><h3>Solution</h3><p>Present the strategy that solves it, wrapped in a proposal. Then close.</p></div>
+    </div>
+  </section>
+
+  <!-- 12 CALL 1 DISCOVERY -->
+  <section class="slide">
+    <div class="kicker">Call 1 · Discovery</div>
+    <h2>Shut up &amp; <span class="g">listen</span></h2>
+    <p class="lead">Call one is for gathering information, not selling. If you're talking a lot, you're losing.</p>
+    <ul>
+      <li><span class="n">→</span><span><b>Talk 10%, they talk 90%.</b> Open with "Tell me about your business."</span></li>
+      <li><span class="n">→</span><span><b>Gather who / how / what / how much</b>, including what they make, so you can size the value.</span></li>
+      <li><span class="n">→</span><span><b>Use their exact verbiage</b> and repeat it back. They feel understood.</span></li>
+      <li><span class="n">→</span><span><b>Record the call</b> and take notes. Don't assume you know the problem.</span></li>
+    </ul>
+  </section>
+
+  <!-- 13 CALL 2 PRESENT & CLOSE -->
+  <section class="slide">
+    <div class="kicker">Call 2 · Present &amp; close</div>
+    <h2>Sell their problem<br><span class="g">back to them</span></h2>
+    <ul>
+      <li><span class="n">01</span><span><b>Recap the goal &amp; the problem</b> in their words. "It sounds like you know my business better than I do."</span></li>
+      <li><span class="n">02</span><span><b>Show the research.</b> 2 to 3 winners in the niche and what they do differently.</span></li>
+      <li><span class="n">03</span><span><b>Present the strategy</b> (your blueprint) as the solution to their problem.</span></li>
+      <li><span class="n">04</span><span><b>Wrap it in the proposal</b> and move to close.</span></li>
+    </ul>
+  </section>
+
+  <!-- 14 ONE CALL CLOSE -->
+  <section class="slide">
+    <div class="kicker">What the blueprint unlocks</div>
+    <h2>The <span class="g">one-call</span> close</h2>
+    <p class="lead">Once you have a proven blueprint, product/market fit, and a live homepage + proposal ready before the call, you don't need two calls. You close on the first one.</p>
+    <div class="quote">"One-call closes <span class="g">all day</span>.<br>Money on the call."</div>
+    <span class="sub">The two-call close is your training wheels. The blueprint is what takes them off.</span>
+  </section>
+
+  <!-- 15 STACK & REVEAL -->
+  <section class="slide">
+    <div class="kicker">Revealing the price</div>
+    <h2>Stack, then <span class="g">reveal</span></h2>
+    <ul>
+      <li><span class="n">01</span><span><b>Answer every question first.</b> No open questions before the price.</span></li>
+      <li><span class="n">02</span><span><b>Isolate the price:</b> "Other than price, any reason we wouldn't work together?"</span></li>
+      <li><span class="n">03</span><span><b>Stack the value</b>, then reveal the number.</span></li>
+      <li><span class="n">04</span><span><b>Then go quiet.</b> First person to speak loses.</span></li>
+    </ul>
+  </section>
+
+  <!-- 16 MOST AFFORDABLE -->
+  <section class="slide">
+    <div class="kicker">The positioning line</div>
+    <h2><span class="g">"Most affordable<br>at my level."</span></h2>
+    <p class="lead">Even at premium prices you can truthfully say this, because you did the research, built the strategy, and uncovered how to bring value. You're not the cheapest; you're the best value at your tier.</p>
+    <span class="sub">Charge more by fulfilling cheaply with the stack, and selling the value.</span>
+  </section>
+
+  <!-- 17 RISK REVERSAL -->
+  <section class="slide">
+    <div class="kicker">De-risk the buyer</div>
+    <h2>Reverse the <span class="g">risk</span></h2>
+    <p class="lead">Premium price needs the risk off the table. The live-homepage-first process makes that safe for you, too. They've already seen it before money changes hands.</p>
+    <div class="grid two">
+      <div class="card"><span class="tag">Offer</span><h3>Free upfront</h3><p>They see the live homepage first; if they love it, they pay. ~$5 to produce, so you carry almost no risk.</p></div>
+      <div class="card"><span class="tag">Terms</span><h3>One-time offer</h3><p>Small deposit to start, then a payment plan. Zero-risk entry for them, secured cash for you.</p></div>
+    </div>
+  </section>
+
+  <!-- 18 CLIENT RISK REVERSAL -->
+  <section class="slide">
+    <div class="kicker">De-risk the client</div>
+    <h2>Your <span class="g">risk-reversal</span></h2>
+    <p class="lead">A satisfaction guarantee is your strongest closing tool. It removes the client's last bit of hesitation and proves your confidence. And the way you fulfil makes it safe to offer.</p>
+    <ul>
+      <li><span class="n">→</span><span><b>What it is.</b> You stand behind the work. If they're not happy with the design, they're not locked in.</span></li>
+      <li><span class="n">→</span><span><b>Why it's safe for you.</b> They approve the live homepage <i>before</i> you build out the full site, so you never invest in work they haven't signed off on (~$5 to produce it).</span></li>
+      <li><span class="n">→</span><span><b>How to position it.</b> Lead with the confidence: "I'm so sure you'll love it that there's no risk to you."</span></li>
+    </ul>
+    <span class="sub">The guarantee isn't a cost. It's what makes a premium price land.</span>
+  </section>
+
+  <!-- 19 RECURRING + UPSELL -->
+  <section class="slide">
+    <div class="kicker">Beyond the build</div>
+    <h2>Recurring &amp; <span class="g">upsells</span></h2>
+    <p class="lead">The build is the start of the relationship, not the end. Stack recurring value so one client keeps paying.</p>
+    <div class="grid three">
+      <div class="card"><span class="tag">Monthly</span><h3>Website care</h3><p>A recurring fee positioned as "website insurance." Support &amp; peace of mind.</p></div>
+      <div class="card"><span class="tag">Upsell</span><h3>AI agents</h3><p>Chat, calls, reviews, follow-up. Add real value beyond the site.</p></div>
+      <div class="card"><span class="tag">Upsell</span><h3>SEO &amp; Ads</h3><p>Traffic services that compound your retainer.</p></div>
+    </div>
+  </section>
+
+  <!-- 20 BUILD YOUR BLUEPRINT -->
+  <section class="slide">
+    <div class="kicker">How to build yours</div>
+    <h2>Build <span class="g">your</span> blueprint</h2>
+    <div class="flow">
+      <span class="step"><b>Competitor research</b></span><span class="arr">→</span>
+      <span class="step"><b>Market research</b></span><span class="arr">→</span>
+      <span class="step"><b>Find what brings value</b></span><span class="arr">→</span>
+      <span class="step"><b>Strategy doc</b></span>
+    </div>
+    <p class="lead" style="margin-top:1.4rem;">Study the niche's best sites, learn what earns trust, and document the repeatable strategy. That document is what you show, sell, and fulfil against, and it powers the proposal.</p>
+  </section>
+
+  <!-- 21 SUMMARY -->
+  <section class="slide">
+    <div class="kicker">The whole idea in one line</div>
+    <h2>The <span class="g">blueprint</span> is the price</h2>
+    <div class="quote" style="max-width:30ch;">You're not charging for a website.<br>You're charging for the <span class="g">mechanism</span> that makes them the obvious choice.</div>
+  </section>
+
+  <!-- 22 ACTION -->
+  <section class="slide">
+    <div class="kicker">Your move</div>
+    <h2>Action <span class="g">items</span></h2>
+    <ul>
+      <li><span class="n">01</span><span><b>Write your one-line mechanism.</b> What you really do for the niche.</span></li>
+      <li><span class="n">02</span><span><b>Finish your strategy doc</b> from competitor + market research.</span></li>
+      <li><span class="n">03</span><span><b>Build your ROI &amp; value math</b> on the niche's real numbers.</span></li>
+      <li><span class="n">04</span><span><b>Draft your proposal</b> that sells the blueprint, and set your recurring + upsell offers.</span></li>
+      <li><span class="n">05</span><span><b>Decide your client risk-reversal</b> and start booking calls.</span></li>
+    </ul>
+    <span class="tape">Foundation complete. Next week we build.</span>
+  </section>
+
+</div>
+
+<footer>
+  <div class="badge"><span class="dot">A</span><span>AIW · Foundation Pt.2</span></div>
+  <div><span id="counter">01 / 22</span></div>
+</footer>
+<div class="nav">
+  <button id="prev" aria-label="Previous">‹</button>
+  <button id="next" aria-label="Next">›</button>
+</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  let i=0;
+  const bar=document.getElementById('bar');
+  const counter=document.getElementById('counter');
+  const pad=n=>String(n).padStart(2,'0');
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%';
+    counter.textContent=pad(i+1)+' / '+pad(slides.length);
+  }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  document.addEventListener('keydown',e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){e.preventDefault();show(i+1);}
+    if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();show(i-1);}
+    if(e.key==='Home')show(0);
+    if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>
