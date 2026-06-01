@@ -1,5 +1,7 @@
 # AIW · Coaching Calls
 
+**Live:** https://slides-aiw.vercel.app
+
 Live coaching decks for the AIW 2.0 cohort. Each deck is a single self-contained HTML file — works offline, no build step.
 
 ## Decks
