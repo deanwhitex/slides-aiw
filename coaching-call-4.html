@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIW · Coaching Call 4 · Foundation Pt.1 · Niche &amp; Offer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,700;1,900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#050505;--bg-mid:#0d0d0d;
+    --accent:oklch(0.90 0.19 96);--accent-deep:oklch(0.74 0.19 92);--accent-light:#ffffff;
+    --ink:#ffffff;--ink-dim:oklch(0.82 0.006 80);--ink-mute:oklch(0.58 0.008 80);--ink-faint:oklch(0.40 0.008 80);
+    --rule:oklch(0.22 0.005 80);
+    --hero:"Saira Condensed","Oswald","Antonio",system-ui,sans-serif;
+    --display:"Saira Condensed","Oswald",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{
+    height:100%;
+    color:var(--ink);
+    font-family:var(--display);
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(ellipse 70% 80% at 78% 50%, #161616 0%, #0a0a0a 55%, #050505 92%),
+      var(--bg-deep);
+  }
+  .stars{
+    position:fixed;inset:0;width:100%;height:100%;
+    z-index:0;pointer-events:none;
+    filter:drop-shadow(0 0 6px oklch(0.90 0.19 96 / 0.55));
+  }
+  .stars path,.stars use{fill:#ffffff;opacity:.55;}
+  .grain{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9  0 0 0 0 0.9  0 0 0 0 0.9  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.45'/></svg>");
+    background-size:240px 240px;mix-blend-mode:overlay;opacity:.08;
+  }
+  .vignette{
+    position:fixed;inset:0;z-index:2;pointer-events:none;
+    background:radial-gradient(ellipse 100% 80% at 50% 50%, transparent 50%, rgba(0,0,0,0.55) 100%);
+  }
+  #deck{position:relative;z-index:10;height:100vh;width:100vw;}
+  .slide{
+    position:absolute;inset:0;
+    display:none;flex-direction:column;justify-content:center;
+    padding:5.5vh 8vw 9vh;
+    opacity:0;transform:translateY(14px);
+    transition:opacity .5s ease, transform .5s ease;
+    overflow:hidden;
+  }
+  .slide.active{display:flex;opacity:1;transform:translateY(0);}
+
+  .kicker{
+    display:inline-flex;align-items:center;gap:14px;
+    font-family:var(--mono);
+    font-size:clamp(.78rem,1.05vw,1rem);
+    font-weight:600;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:var(--accent-light);
+    margin-bottom:1.6rem;
+  }
+  .kicker::before{
+    content:'';
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent-light);
+    box-shadow:0 0 10px oklch(0.90 0.19 96 / .65);
+    flex:none;
+  }
+
+  h1{
+    font-family:var(--hero);
+    font-weight:900;
+    font-size:clamp(3rem,7.5vw,6.4rem);
+    line-height:.94;
+    letter-spacing:-.025em;
+    text-transform:uppercase;
+    color:var(--ink);
+    text-wrap:balance;
+  }
+  h1 .g{color:var(--accent);}
+  h2{
+    font-family:var(--hero);
+    font-weight:900;
+    font-size:clamp(2rem,4.6vw,3.6rem);
+    line-height:1;
+    letter-spacing:-.01em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:.3rem;
+    text-wrap:balance;
+  }
+  h2 .g{color:var(--accent);}
+
+  .lead{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(1rem,1.55vw,1.4rem);
+    line-height:1.42;
+    color:var(--ink-dim);
+    max-width:62ch;
+    margin-top:1rem;
+    text-wrap:pretty;
+  }
+  .lead b{color:var(--ink);font-weight:700;}
+
+  .sub{
+    font-family:var(--mono);
+    font-size:clamp(.66rem,.8vw,.78rem);
+    font-weight:500;
+    letter-spacing:.32em;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    margin-top:1.3rem;
+  }
+
+  .tape{
+    font-family:var(--mono);
+    font-size:clamp(.66rem,.82vw,.8rem);
+    font-weight:500;
+    letter-spacing:.32em;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    margin-top:1.3rem;
+  }
+
+  ul{
+    list-style:none;
+    margin-top:1.4rem;
+    display:flex;flex-direction:column;gap:.85rem;
+    max-width:70ch;
+  }
+  li{
+    display:flex;gap:1rem;align-items:flex-start;
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(.95rem,1.45vw,1.3rem);
+    color:var(--ink-dim);
+    line-height:1.32;
+  }
+  li .n{
+    font-family:var(--mono);
+    color:var(--accent);
+    font-weight:700;
+    font-size:.9em;
+    flex:none;width:1.9em;
+    padding-top:.15em;
+  }
+  li b{font-weight:700;color:var(--ink);}
+
+  .grid{display:grid;gap:1rem;margin-top:1.5rem;}
+  .grid.two{grid-template-columns:repeat(2,1fr);}
+  .grid.three{grid-template-columns:repeat(3,1fr);}
+
+  .card{
+    background:rgba(255,255,255,0.02);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--accent-light);
+    padding:1.2rem 1.35rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .card h3{
+    font-family:var(--hero);
+    font-weight:900;
+    font-size:clamp(1.05rem,1.4vw,1.35rem);
+    line-height:1;
+    letter-spacing:-.005em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:.45rem;
+  }
+  .card p{
+    font-family:var(--display);
+    font-weight:500;
+    color:var(--ink-dim);
+    font-size:.95rem;
+    line-height:1.36;
+  }
+  .card p b{color:var(--ink);font-weight:700;}
+  .card .tag{
+    font-family:var(--mono);
+    font-size:.62rem;
+    font-weight:600;
+    letter-spacing:.32em;
+    color:var(--accent-light);
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:.55rem;
+  }
+
+  .flow{
+    display:flex;align-items:center;flex-wrap:wrap;
+    gap:.55rem;
+    margin-top:1.8rem;
+  }
+  .step{
+    background:rgba(255,255,255,0.03);
+    border:1px solid oklch(0.30 0.005 80);
+    padding:.75rem 1rem;
+    font-family:var(--mono);
+    font-size:.78rem;
+    font-weight:500;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .step b{color:var(--accent);font-weight:700;}
+  .arr{
+    color:var(--accent);
+    font-size:1.1rem;
+    font-family:var(--mono);
+  }
+
+  .quote{
+    font-family:var(--hero);
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(1.3rem,2.6vw,2.2rem);
+    line-height:1.3;
+    max-width:26ch;
+    color:var(--ink);
+    margin-top:.6rem;
+    text-wrap:balance;
+  }
+  .quote .g{
+    color:var(--accent);
+    font-style:normal;
+    font-weight:900;
+  }
+
+  .law{
+    border:1px dashed var(--accent);
+    background:oklch(0.90 0.19 96 / .05);
+    padding:1.4rem 1.6rem;
+    margin-top:1.5rem;
+    max-width:60ch;
+  }
+  .law .t{
+    font-family:var(--mono);
+    font-size:.68rem;
+    font-weight:600;
+    letter-spacing:.32em;
+    color:var(--accent-light);
+    text-transform:uppercase;
+    margin-bottom:.6rem;
+  }
+  .law .b{
+    font-family:var(--hero);
+    font-weight:900;
+    font-size:clamp(1.3rem,2.8vw,2.1rem);
+    text-transform:uppercase;
+    line-height:1.05;
+    color:var(--ink);
+    letter-spacing:-.005em;
+  }
+  .law .b span{color:var(--accent);}
+
+  .when{
+    font-family:var(--mono);
+    font-size:.66rem;
+    font-weight:600;
+    color:var(--accent-light);
+    letter-spacing:.28em;
+    margin-top:.5rem;
+    display:block;
+    text-transform:uppercase;
+  }
+
+  .stages{
+    display:flex;flex-wrap:wrap;
+    gap:.5rem;
+    margin-top:1.6rem;
+    align-items:center;
+  }
+  .stage{
+    border:1px solid var(--rule);
+    background:rgba(255,255,255,0.02);
+    padding:.75rem .95rem;
+    font-family:var(--display);
+    font-size:.95rem;
+    font-weight:500;
+    color:var(--ink-dim);
+    min-width:9.5em;
+  }
+  .stage b{
+    color:var(--accent-light);
+    font-weight:700;
+    display:block;
+    font-family:var(--mono);
+    font-size:.62rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    margin-bottom:.3rem;
+  }
+
+  .twocol{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2.4rem;
+    margin-top:1.3rem;
+  }
+  .twocol h4{
+    font-family:var(--mono);
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--accent-light);
+    margin-bottom:.85rem;
+  }
+  .twocol ul{margin-top:0;gap:.6rem;}
+
+  .anatomy{
+    margin-top:1.3rem;
+    display:flex;flex-direction:column;
+    gap:.6rem;
+    max-width:74ch;
+  }
+  .anatomy .row{
+    display:flex;gap:1rem;align-items:baseline;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:.55rem;
+  }
+  .anatomy .lbl{
+    font-family:var(--mono);
+    font-size:.66rem;
+    font-weight:600;
+    letter-spacing:.26em;
+    text-transform:uppercase;
+    color:var(--accent-light);
+    width:9em;
+    flex:none;
+    padding-top:.15em;
+  }
+  .anatomy .txt{
+    font-family:var(--display);
+    font-weight:500;
+    color:var(--ink-dim);
+    font-size:clamp(.92rem,1.35vw,1.2rem);
+    line-height:1.3;
+  }
+  .anatomy .txt b{color:var(--ink);font-weight:700;}
+
+  footer{
+    position:fixed;
+    bottom:0;left:0;right:0;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1rem 2rem;
+    font-family:var(--mono);
+    font-size:clamp(.62rem,.78vw,.74rem);
+    font-weight:500;
+    letter-spacing:.32em;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    z-index:30;
+  }
+  .badge{display:flex;align-items:center;gap:.7rem;}
+  .badge .dot{
+    width:24px;height:24px;border-radius:50%;
+    background:var(--accent-light);
+    color:#000;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--hero);
+    font-weight:900;
+    font-size:.72rem;
+    letter-spacing:0;
+  }
+
+  .progress{
+    position:fixed;top:0;left:0;
+    height:3px;background:var(--accent);
+    z-index:40;transition:width .4s ease;
+    box-shadow:0 0 16px oklch(0.90 0.19 96 / .45);
+  }
+  .nav{
+    position:fixed;bottom:.9rem;right:2rem;
+    display:flex;gap:.5rem;
+    z-index:40;
+  }
+  .nav button{
+    background:transparent;
+    border:1px solid var(--rule);
+    color:var(--ink);
+    width:36px;height:36px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:.2s;
+    font-family:var(--mono);
+  }
+  .nav button:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<svg class="stars" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <path id="s" d="M0,-12 L3,-3 L12,0 L3,3 L0,12 L-3,3 L-12,0 L-3,-3 Z"/>
+  </defs>
+  <use href="#s" x="140" y="120"/>
+  <use href="#s" x="320" y="780"/>
+  <use href="#s" x="540" y="260"/>
+  <use href="#s" x="780" y="940"/>
+  <use href="#s" x="980" y="160"/>
+  <use href="#s" x="1180" y="640"/>
+  <use href="#s" x="1380" y="220"/>
+  <use href="#s" x="1500" y="860"/>
+  <use href="#s" x="1720" y="380"/>
+  <use href="#s" x="1820" y="720"/>
+</svg>
+<div class="grain"></div>
+<div class="vignette"></div>
+
+<div class="progress" id="bar"></div>
+<div id="deck">
+
+  <!-- 1 TITLE -->
+  <section class="slide active">
+    <div class="kicker">Week of Foundation · Session 1 of 2</div>
+    <h1>The <span class="g">Foundation</span><br>Niche &amp; Offer</h1>
+    <p class="lead">Today you choose your lane, do the research that uncovers your value, learn how to package an irresistible offer, build the confidence to put it out, and pick the outreach method you'll run first. This is where the agency is actually born.</p>
+    <span class="tape">AIW · AI Web Design Agency</span>
+  </section>
+
+  <!-- 2 WHAT FOUNDATION IS -->
+  <section class="slide">
+    <div class="kicker">Why this comes first</div>
+    <h2>Foundation isn't <span class="g">busywork</span></h2>
+    <p class="lead">Everything downstream, fulfilment with Claude Code, pricing, scaling, falls apart if the foundation is shaky. Get this right and the rest gets easy. You stop being a freelancer selling time and become a specialist selling value.</p>
+    <ul>
+      <li><span class="n">01</span><span><b>Choose the niche</b>. Who you serve, all day, every day.</span></li>
+      <li><span class="n">02</span><span><b>Do the research</b>. Uncover the strategy that delivers value.</span></li>
+      <li><span class="n">03</span><span><b>Package the offer</b>. Make it irresistible and risk-free.</span></li>
+      <li><span class="n">04</span><span><b>Build confidence &amp; pick outreach</b>. One channel, run it hard.</span></li>
+    </ul>
+  </section>
+
+  <!-- 3 THE FOUNDATION ORDER -->
+  <section class="slide">
+    <div class="kicker">The sequence</div>
+    <h2>The foundation <span class="g">order</span></h2>
+    <p class="lead">Do these in order. Each step feeds the next. You can't craft a great offer without first knowing your niche and what your competitors are really selling.</p>
+    <div class="flow">
+      <span class="step"><b>1 ·</b> Pick niche</span><span class="arr">→</span>
+      <span class="step"><b>2 ·</b> Competitor research</span><span class="arr">→</span>
+      <span class="step"><b>3 ·</b> Market research</span><span class="arr">→</span>
+      <span class="step"><b>4 ·</b> Strategy doc</span><span class="arr">→</span>
+      <span class="step"><b>5 ·</b> Craft offer</span><span class="arr">→</span>
+      <span class="step"><b>6 ·</b> Social + site</span><span class="arr">→</span>
+      <span class="step"><b>7 ·</b> Take to market</span>
+    </div>
+    <span class="sub">Today we work through steps 1 to 6. Outreach (step 7) is where it pays off.</span>
+  </section>
+
+  <!-- 4 ROADMAP -->
+  <section class="slide">
+    <div class="kicker">Today's roadmap</div>
+    <h2>Where we're <span class="g">headed</span></h2>
+    <div class="grid three">
+      <div class="card"><span class="tag">01</span><h3>Niche</h3><p>Pick it on the right factors.</p></div>
+      <div class="card"><span class="tag">02</span><h3>Research</h3><p>Competitors, market &amp; platform.</p></div>
+      <div class="card"><span class="tag">03</span><h3>The real goal</h3><p>What they actually want.</p></div>
+      <div class="card"><span class="tag">04</span><h3>The offer</h3><p>Irresistible &amp; risk-free.</p></div>
+      <div class="card"><span class="tag">05</span><h3>Authority + booking</h3><p>Profile &amp; easy scheduling.</p></div>
+      <div class="card"><span class="tag">06</span><h3>Outreach</h3><p>5 methods &amp; the cold call.</p></div>
+    </div>
+  </section>
+
+  <!-- 5 NICHE FACTORS 1 -->
+  <section class="slide">
+    <div class="kicker">Step 1 · Niche (1 of 2)</div>
+    <h2>Pick your <span class="g">niche</span></h2>
+    <p class="lead">Niching down lets you specialise, charge premium, and become "the guy." First, judge the money side:</p>
+    <ul>
+      <li><span class="n">→</span><span><b>Ticket size first.</b> One client should be able to pay for the whole project, and a second makes you both profitable. High-ticket beats high-volume.</span></li>
+      <li><span class="n">→</span><span><b>Industry size, but don't obsess.</b> Big enough to have room, not so big it's saturated. A smaller "blue ocean" can still print.</span></li>
+      <li><span class="n">→</span><span><b>Recession proof?</b> Will they still spend when things tighten? (The trampoline park shut down in COVID.)</span></li>
+      <li><span class="n">→</span><span><b>Already done work there?</b> Existing momentum is a strong signal.</span></li>
+    </ul>
+  </section>
+
+  <!-- 6 NICHE FACTORS 2 -->
+  <section class="slide">
+    <div class="kicker">Step 1 · Niche (2 of 2)</div>
+    <h2>Pick your <span class="g">niche</span></h2>
+    <ul>
+      <li><span class="n">→</span><span><b>B2C over B2B.</b> Consumer-facing businesses actually use the website to win trust and customers, so a great site is worth far more to them.</span></li>
+      <li><span class="n">→</span><span><b>Standardised blueprint.</b> Are the businesses similar enough to systemise? (Window cleaning = yes. "Insurance" = too many different sub-types.)</span></li>
+      <li><span class="n">→</span><span><b>Who benefits most from a website?</b> High-commitment, "serious" decisions where the customer researches before buying. Surgeons, hair transplants, roofing, dentists, med spas.</span></li>
+    </ul>
+    <span class="sub">The more a customer researches before they buy, the more a trust-building site is worth.</span>
+  </section>
+
+  <!-- 7 BECOME THE GUY -->
+  <section class="slide">
+    <div class="kicker">Then commit</div>
+    <h2>Become <span class="g">the guy</span></h2>
+    <p class="lead">Once you've made an informed decision, go with it. Plant the flag publicly. Don't wait to feel ready.</p>
+    <div class="quote">"I'm the <span class="g">[niche]</span> website guy."</div>
+    <p class="lead" style="margin-top:1.3rem;">Post it. Specialising is what opens the doors. Networks, referrals, premium pricing. It's a stepping stone, not a life sentence. Don't be afraid to claim it.</p>
+    <span class="sub">Roofing &amp; King Contractor = the proof-of-concept, not the only niche.</span>
+  </section>
+
+  <!-- 8 WHERE THEY HANG OUT -->
+  <section class="slide">
+    <div class="kicker">Step 2 · Platform</div>
+    <h2>Where does your<br>niche <span class="g">hang out?</span></h2>
+    <p class="lead">You can't fish where there are no fish. Find the watering hole before you write a single message, and log it all in a sheet.</p>
+    <div class="flow">
+      <span class="step">Search "<b>[niche] owners</b>" on Facebook</span>
+      <span class="arr">→</span>
+      <span class="step">Find the <b>groups</b> &amp; check they're popping</span>
+      <span class="arr">→</span>
+      <span class="step">Note <b>FB / IG / LinkedIn / forums</b></span>
+    </div>
+    <p class="lead" style="margin-top:1.4rem;font-size:1.05rem;">Different demographics live in different places. B2C trades cluster on Facebook; clinics &amp; pro services skew LinkedIn/Instagram. Go where <i>they</i> are, then build your sheet of prospects.</p>
+  </section>
+
+  <!-- 9 COMPETITOR + MARKET RESEARCH -->
+  <section class="slide">
+    <div class="kicker">Step 3 · Research</div>
+    <h2>Study the <span class="g">winners</span></h2>
+    <p class="lead">Look at the agencies already winning in your niche. They're "just" web designers, but what they actually sell is a <b>strategy that delivers value.</b> Your job is to uncover that blueprint and replicate it.</p>
+    <div class="grid two">
+      <div class="card"><span class="tag">On the competitor</span><h3>How they operate</h3><p>What they price, how they position, where they're niche vs. generic.</p></div>
+      <div class="card"><span class="tag">On their website</span><h3>What earns trust</h3><p>Trust badges, reviews, real-life video, case studies (situation → solution → result), CTAs &amp; friction.</p></div>
+    </div>
+    <span class="sub">Watch for the big tell: are they selling features, or results? Sell results.</span>
+  </section>
+
+  <!-- 10 THE REAL GOAL -->
+  <section class="slide">
+    <div class="kicker">Step 3 · Deep research</div>
+    <h2>They don't want<br>a <span class="g">website</span></h2>
+    <p class="lead">Research what your niche really wants from a marketer or web designer, and the exact words <i>they</i> use. Mirror that verbiage back in your offer and on calls.</p>
+    <div class="grid two">
+      <div class="card"><span class="tag">The surface ask</span><h3>"A new website"</h3><p>Nice design, modern look, mobile-friendly.</p></div>
+      <div class="card"><span class="tag">The real goal</span><h3>Trust &amp; customers</h3><p>Be chosen over competitors. More booked jobs. Look like the obvious safe choice.</p></div>
+    </div>
+    <span class="sub">Collect their phrases now. They become your headlines later.</span>
+  </section>
+
+  <!-- 11 TRAFFIC TRUST CONVERSION -->
+  <section class="slide">
+    <div class="kicker">The lens</div>
+    <h2>Traffic · Trust ·<br><span class="g">Conversion</span></h2>
+    <p class="lead">Every successful website does three things. This is the framework you use to review sites, build your strategy, and explain your value to a prospect.</p>
+    <div class="grid three">
+      <div class="card"><span class="tag">01</span><h3>Traffic</h3><p>Get the right people to the site. SEO, ads, presence.</p></div>
+      <div class="card"><span class="tag">02</span><h3>Trust</h3><p>Make them believe. Reviews, proof, faces, badges, results.</p></div>
+      <div class="card"><span class="tag">03</span><h3>Conversion</h3><p>Make it easy to act. Clear CTAs, frictionless contact.</p></div>
+    </div>
+    <span class="sub">Layer your unique mechanism into each. This same framework = great content.</span>
+  </section>
+
+  <!-- 12 IRRESISTIBLE OFFER -->
+  <section class="slide">
+    <div class="kicker">Step 4 · The offer</div>
+    <h2>Build an <span class="g">irresistible</span> offer</h2>
+    <p class="lead">The offer changes with your stage of business. Early on, you carry the risk to win trust; as your proof grows, you shift the risk back to them.</p>
+    <div class="stages">
+      <span class="stage"><b>Stage 1</b>Free (portfolio + experience)</span>
+      <span class="arr">→</span>
+      <span class="stage"><b>Stage 2</b>Free upfront (pay if you like it)</span>
+      <span class="arr">→</span>
+      <span class="stage"><b>Stage 3</b>Deposit down</span>
+      <span class="arr">→</span>
+      <span class="stage"><b>Stage 4</b>Payment plan</span>
+      <span class="arr">→</span>
+      <span class="stage"><b>Stage 5</b>Raise prices</span>
+    </div>
+    <span class="sub">Reference: Alex Hormozi, "$100M Offers."</span>
+  </section>
+
+  <!-- 13 FREE UPFRONT -->
+  <section class="slide">
+    <div class="kicker">The beginner power move</div>
+    <h2>The <span class="g">free-upfront</span> offer</h2>
+    <p class="lead">You build a <b>live homepage</b> and have the <b>proposal ready</b> before you ever get on the call. They only pay if they love it. It feels insane to the prospect, which is exactly why it cuts through the spam.</p>
+    <div class="twocol">
+      <div>
+        <h4>Why it works</h4>
+        <ul>
+          <li><span class="n">→</span><span>Removes <b>all risk</b> from the prospect.</span></li>
+          <li><span class="n">→</span><span>Proves your confidence and seriousness.</span></li>
+          <li><span class="n">→</span><span>It's <b>tangible</b>. A real, live homepage, not a mockup.</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Why it's safe for you</h4>
+        <ul>
+          <li><span class="n">→</span><span>~<b>$5</b> to generate a fully functional live homepage before the call (Website Factory).</span></li>
+          <li><span class="n">→</span><span>No developer until it's sold.</span></li>
+          <li><span class="n">→</span><span>Small risk, <b>huge upside.</b></span></li>
+        </ul>
+      </div>
+    </div>
+    <span class="sub">Goal of the offer = sell the call, not the website.</span>
+  </section>
+
+  <!-- 14 ANATOMY OF THE OFFER -->
+  <section class="slide">
+    <div class="kicker">Anatomy</div>
+    <h2>How the offer is <span class="g">built</span></h2>
+    <div class="anatomy">
+      <div class="row"><span class="lbl">Compliment</span><span class="txt">Commend their reviews / work. Specific &amp; genuine.</span></div>
+      <div class="row"><span class="lbl">Pattern break</span><span class="txt">"This'll sound crazy, but hear me out..."</span></div>
+      <div class="row"><span class="lbl">The offer</span><span class="txt">A free, custom <b>live homepage</b>. No payment, no risk.</span></div>
+      <div class="row"><span class="lbl">The "catch"</span><span class="txt">You get a portfolio piece; you're that confident.</span></div>
+      <div class="row"><span class="lbl">The process</span><span class="txt">You see the live homepage + proposal up front; if you like it, we build out the full site at an agreed price.</span></div>
+      <div class="row"><span class="lbl">Risk reversal</span><span class="txt">"If I waste your time, coffee's on me." Mutual win.</span></div>
+    </div>
+    <span class="sub">Keep it short, hyper-personal, and human. Never a wall of text.</span>
+  </section>
+
+  <!-- 15 STACK RESEARCH PHASE -->
+  <section class="slide">
+    <div class="kicker">AIW stack · Website Factory + Content Engine</div>
+    <h2>This <span class="g">is</span> the research phase</h2>
+    <p class="lead">Everything you just did, niche, competitor research, market research, strategy doc, offer, is the <b>exact research &amp; interview phase</b> the Website Factory + Content Engine stack walks you through. It assembles your findings into documents you can read, reuse, and build on.</p>
+    <div class="flow">
+      <span class="step"><b>Research phase</b></span><span class="arr">→</span>
+      <span class="step"><b>Strategy + offer docs</b></span><span class="arr">→</span>
+      <span class="step"><b>Cold calls</b></span><span class="arr">→</span>
+      <span class="step"><b>Notes:</b> what worked / what didn't</span><span class="arr">→</span>
+      <span class="step"><b>Feed the engine</b></span><span class="arr">↺</span>
+    </div>
+    <p class="lead" style="margin-top:1.3rem;font-size:1.05rem;">After every call, log what landed and what flopped and feed it back in. The engine turns that into sharper <b>copy</b> and the exact <b>verbiage your niche responds to</b>. It gets better the more you talk to people.</p>
+  </section>
+
+  <!-- 16 AUTHORITY PROFILE -->
+  <section class="slide">
+    <div class="kicker">Step 5 · Authority</div>
+    <h2>Make your profile<br><span class="g">authoritative</span></h2>
+    <p class="lead">Before you reach out, people will check you. Give them a reason to trust you in 5 seconds. People do business with people who look reputable.</p>
+    <ul>
+      <li><span class="n">→</span><span><b>Content.</b> Post case studies, results, and website reviews using Traffic / Trust / Conversion. Become "the [niche] website person" publicly.</span></li>
+      <li><span class="n">→</span><span><b>Images.</b> Your face, your work, reviews, examples. Visual proof beats claims.</span></li>
+      <li><span class="n">→</span><span><b>Position as an equal.</b> Confident, helpful, excited for their business. Never an energy leech.</span></li>
+    </ul>
+  </section>
+
+  <!-- 17 BOOKING -->
+  <section class="slide">
+    <div class="kicker">Step 5 · Booking</div>
+    <h2>Make it easy to <span class="g">book you</span></h2>
+    <p class="lead">Remove every gram of friction between "interested" and "on a call." When it turns positive, you book them <b>in the same conversation.</b></p>
+    <div class="grid two">
+      <div class="card"><span class="tag">Pick any tool</span><h3>Calendar + video</h3><p>Calendly, Google Meet, Zoom, or any calendar that lets you share a link and hop on a video call. Use what's easy.</p></div>
+      <div class="card"><span class="tag">Wire it up</span><h3>Feed it into GHL</h3><p>Capture name, email &amp; number → GoHighLevel handles the reminders &amp; follow-ups automatically.</p></div>
+    </div>
+    <span class="sub">Always schedule the next step while you still have them in the conversation.</span>
+  </section>
+
+  <!-- 18 OUTREACH OVERVIEW -->
+  <section class="slide">
+    <div class="kicker">Step 6 · Outreach</div>
+    <h2>5 ways to <span class="g">reach</span> them</h2>
+    <p class="lead">Same offer, same market, different mediums. Pick one and run it hard before adding another.</p>
+    <div class="grid three">
+      <div class="card"><span class="tag">Channel 01</span><h3>Cold Call</h3><p>Great &amp; low cost.</p><span class="when">Start here</span></div>
+      <div class="card"><span class="tag">Channel 02</span><h3>Cold DM</h3><p>Once your profile shows real work.</p><span class="when">After authority</span></div>
+      <div class="card"><span class="tag">Channel 03</span><h3>Cold Email</h3><p>Strong in Europe / other countries. Weaker in the USA.</p><span class="when">Region-aware</span></div>
+      <div class="card"><span class="tag">Channel 04</span><h3>Content</h3><p>Amazing, but heavy effort upfront.</p><span class="when">Long game</span></div>
+      <div class="card"><span class="tag">Channel 05</span><h3>Ads</h3><p>Work great, need a funnel, ad spend &amp; some product/market fit.</p><span class="when">Once dialled</span></div>
+      <div class="card" style="border-left-color:var(--accent);"><span class="tag">Rule</span><h3>One channel</h3><p>Master one before stacking the next.</p></div>
+    </div>
+  </section>
+
+  <!-- 19 COLD CALL DEEP DIVE -->
+  <section class="slide">
+    <div class="kicker">Deep dive · Abou's gold</div>
+    <h2>The <span class="g">cold call</span></h2>
+    <p class="lead">Lowest cost, fastest feedback, most reps with real prospects. The goal of the call is <b>not</b> to sell a website. It's to sell the next step.</p>
+    <div class="flow">
+      <span class="step">DM / Call → sell the <b>call</b></span>
+      <span class="arr">→</span>
+      <span class="step">Call → sell the <b>Zoom</b></span>
+      <span class="arr">→</span>
+      <span class="step">Zoom → sell the <b>website</b></span>
+    </div>
+    <p class="lead" style="margin-top:1.3rem;font-size:1.05rem;">Move them along the natural progression of trust. Don't rush steps. Every prospect you talk to teaches you the niche, even the ones who don't buy.</p>
+  </section>
+
+  <!-- 20 COLD CALL MACHINE -->
+  <section class="slide">
+    <div class="kicker">The acquisition loop</div>
+    <h2>The cold-call <span class="g">machine</span></h2>
+    <p class="lead">A repeatable manual loop you run daily. Manual first, systemise later.</p>
+    <div class="flow">
+      <span class="step"><b>Google Maps</b> <span style="color:var(--ink-mute)">(Apify)</span></span><span class="arr">→</span>
+      <span class="step"><b>Call</b></span><span class="arr">→</span>
+      <span class="step"><b>Script</b></span><span class="arr">→</span>
+      <span class="step"><b>Book call</b></span><span class="arr">→</span>
+      <span class="step"><b>Generate live homepage</b></span>
+    </div>
+    <p class="lead" style="margin-top:1.4rem;font-size:1.05rem;">Pull businesses from Maps, dial them, run your script, book the call, and generate a live homepage (~$5) to present. Repeat at volume.</p>
+  </section>
+
+  <!-- 21 APIFY LEAD LIST -->
+  <section class="slide">
+    <div class="kicker">Feed the machine · Apify</div>
+    <h2>Build the <span class="g">lead list</span></h2>
+    <p class="lead">Apify is already in your Website Factory stack. Its Google Maps actor turns the manual "find a business" step into an instant pipeline. Set up a project in Claude and let it do the digging.</p>
+    <div class="grid three">
+      <div class="card"><span class="tag">Target</span><h3>Maps + niche + area</h3><p>Pull businesses in your niche near you that have <b>no website</b> or a <b>low-quality</b> one. Your warmest cold prospects.</p></div>
+      <div class="card"><span class="tag">Scrape</span><h3>Contact + socials</h3><p>Grab email, phone number, and any social profiles you can reach out on.</p></div>
+      <div class="card"><span class="tag">Assemble</span><h3>Claude builds the list</h3><p>Claude cleans it into a ready-to-dial lead sheet for your script.</p></div>
+    </div>
+    <span class="sub">Cost: under ~$5 for 100 leads. Cheap fuel for the cold-call machine.</span>
+  </section>
+
+  <!-- 22 ON THE CALL LOOP -->
+  <section class="slide">
+    <div class="kicker">Once you're on</div>
+    <h2>On the call <span class="g">loop</span></h2>
+    <div class="flow">
+      <span class="step"><b>Present</b></span><span class="arr">→</span>
+      <span class="step"><b>Sell</b></span><span class="arr">→</span>
+      <span class="step"><b>Testimonial</b></span><span class="arr">→</span>
+      <span class="step"><b>Learn</b></span><span class="arr">→</span>
+      <span class="step"><b>Repeat</b></span>
+    </div>
+    <ul style="margin-top:1.6rem;">
+      <li><span class="n">→</span><span><b>Present</b> the live homepage &amp; strategy. Show, don't tell.</span></li>
+      <li><span class="n">→</span><span><b>Sell</b> the result, then ask for the <b>testimonial</b> on the spot.</span></li>
+      <li><span class="n">→</span><span><b>Learn</b> from every call and feed it back into the script. <b>Repeat.</b></span></li>
+    </ul>
+  </section>
+
+  <!-- 23 THE LAW -->
+  <section class="slide">
+    <div class="kicker">The operating law</div>
+    <h2><span class="g">Manual first.</span></h2>
+    <h2>Systemise later.</h2>
+    <div class="law">
+      <div class="t">Why it matters</div>
+      <div class="b">Do it by hand until you<br>know it works, <span>then</span> automate.</div>
+    </div>
+    <p class="lead">Volume + reps beat clever tooling early on. Talk to prospects, learn the niche, build the proof. The systems come after the manual version is proven.</p>
+  </section>
+
+  <!-- 24 HOMEWORK -->
+  <section class="slide">
+    <div class="kicker">Your move today</div>
+    <h2>Action <span class="g">items</span></h2>
+    <ul>
+      <li><span class="n">01</span><span><b>Lock your niche</b> using the ticket-size &amp; recession-proof filters, then claim it publicly.</span></li>
+      <li><span class="n">02</span><span><b>Research 3 to 5 competitors.</b> What they price, what earns trust, features vs. results.</span></li>
+      <li><span class="n">03</span><span><b>Find the watering hole</b> + collect their exact verbiage in a sheet.</span></li>
+      <li><span class="n">04</span><span><b>Draft your free-upfront offer.</b> Live homepage + proposal, using the anatomy.</span></li>
+      <li><span class="n">05</span><span><b>Polish your profile</b>, set up a booking link → GHL, and pick your <b>one</b> outreach channel.</span></li>
+    </ul>
+  </section>
+
+  <!-- 25 NEXT -->
+  <section class="slide">
+    <div class="kicker">Wednesday · Session 2 of 2</div>
+    <h2>Next: the <span class="g">mechanism</span></h2>
+    <p class="lead">You've picked the niche, done the research, and packaged the offer. Wednesday we go into <b>the blueprint</b>. The mechanism we use to justify the price and turn a "website" into something worth thousands.</p>
+    <span class="tape">You can do this. See you Wednesday.</span>
+  </section>
+
+</div>
+
+<footer>
+  <div class="badge"><span class="dot">A</span><span>AIW · Foundation Pt.1</span></div>
+  <div><span id="counter">01 / 25</span></div>
+</footer>
+<div class="nav">
+  <button id="prev" aria-label="Previous">‹</button>
+  <button id="next" aria-label="Next">›</button>
+</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  let i=0;
+  const bar=document.getElementById('bar');
+  const counter=document.getElementById('counter');
+  const pad=n=>String(n).padStart(2,'0');
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%';
+    counter.textContent=pad(i+1)+' / '+pad(slides.length);
+  }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  document.addEventListener('keydown',e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){e.preventDefault();show(i+1);}
+    if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();show(i-1);}
+    if(e.key==='Home')show(0);
+    if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>
