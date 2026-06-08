@@ -11,7 +11,7 @@ Live coaching decks for the AIW 2.0 cohort. Each deck is a single self-contained
 | 03 | Claude Code Crash Course | [`coaching-call-3.html`](./coaching-call-3.html) |
 | 04 | Foundation Pt.1 · Niche & Offer | [`coaching-call-4.html`](./coaching-call-4.html) |
 | 05 | Foundation Pt.2 · The Mechanism | [`coaching-call-5.html`](./coaching-call-5.html) |
-| 06 | Acquisition · Facebook Groups | [`coaching-call-6.html`](./coaching-call-6.html) |
+| 07 | Acquisition · Facebook Groups | [`coaching-call-7.html`](./coaching-call-7.html) |
 
 The [`index.html`](./index.html) landing page links to all decks.
 
