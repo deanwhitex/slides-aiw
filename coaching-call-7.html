@@ -6,7 +6,7 @@
 <title>AIW · Coaching Call 7 · Acquisition · Facebook Groups</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,700;1,900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,700;1,900&family=JetBrains+Mono:wght@500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg-deep:#050505;--bg-mid:#0d0d0d;
@@ -342,9 +342,42 @@
     border-color:var(--accent);
     color:var(--accent);
   }
+
+  /* ============ chalk sketch system ============ */
+  :root{--chalk:#ece3d2;--chalk-dim:rgba(236,227,210,0.5);--sketch:"Caveat",cursive;}
+  .ink{fill:none;stroke:var(--chalk);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);}
+  .ink.thick{stroke-width:3.6;}
+  .ink.gold{stroke:var(--accent);}
+  .ink.dim{stroke:var(--chalk-dim);}
+  .ink.dash{stroke-dasharray:7 10;}
+  .fillgold{fill:var(--accent);stroke:none;filter:url(#rough);}
+  text.lab{font-family:var(--sketch);font-weight:600;fill:var(--chalk);}
+  text.lab.g{fill:var(--accent);font-weight:700;}
+  text.lab.d{fill:var(--chalk-dim);}
+  text.lab tspan.au{fill:var(--accent);font-weight:700;}
+
+  .sgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem 1.6rem;margin-top:1.5rem;width:100%;max-width:1060px;}
+  .scard{position:relative;display:flex;align-items:center;gap:1.1rem;padding:1rem 1.4rem;min-height:108px;}
+  .scard .frame{position:absolute;inset:0;width:100%;height:100%;}
+  .snum{position:absolute;top:.4rem;right:.95rem;font-family:var(--sketch);font-weight:700;font-size:1.6rem;color:var(--accent);line-height:1;}
+  .sicon{width:74px;height:74px;flex:none;}
+  .stext h3{font-family:var(--sketch);font-weight:700;font-size:1.95rem;color:var(--chalk);line-height:.95;margin-bottom:.15rem;text-transform:none;letter-spacing:0;}
+  .stext p{font-family:var(--display);font-weight:500;font-size:.92rem;color:var(--ink-dim);line-height:1.3;max-width:26ch;}
+
+  .diagram{align-self:center;margin-top:1.1rem;width:100%;}
+  .diagram svg{height:48vh;width:auto;max-width:100%;margin:0 auto;display:block;}
+  .diagram.sm svg{height:40vh;}
+  .diagram.lg svg{height:56vh;}
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="2" seed="6" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</defs></svg>
 
 <svg class="stars" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
   <defs>
@@ -387,11 +420,42 @@
   <section class="slide">
     <div class="kicker">The playbook</div>
     <h2>4 ways to <span class="g">get customers</span> from groups</h2>
-    <div class="grid two">
-      <div class="card"><span class="tag">Method 01</span><h3>DM outreach</h3><p>Hand-pick qualified members and message them one by one. Slow. Best for reps and learning the niche.</p></div>
-      <div class="card"><span class="tag">Method 02</span><h3>Group posts</h3><p>Post the same offer across many groups. The beginner workhorse. First 5 to 10 customers live here.</p></div>
-      <div class="card"><span class="tag">Method 03</span><h3>Partner with owners</h3><p>Use someone else's audience. Pay-per-close or recurring split. Faster than building your own.</p></div>
-      <div class="card"><span class="tag">Method 04</span><h3>Start your own group</h3><p>Own the audience and the rules. Slowest to build. Largest moat once built.</p></div>
+    <div class="sgrid">
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">01</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink">
+          <path d="M9 14 H55 a5 5 0 0 1 5 5 V40 a5 5 0 0 1 -5 5 H30 L18 54 V45 H9 a5 5 0 0 1 -5 -5 V19 a5 5 0 0 1 5 -5 Z"/>
+          <line x1="15" y1="26" x2="49" y2="26"/><line x1="15" y1="34" x2="41" y2="34"/>
+        </g></svg>
+        <div class="stext"><h3>DM outreach</h3><p>Hand-picked, one by one. Slow, but it teaches you the niche.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">02</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink">
+          <path d="M13 28 L42 18 V46 L13 36 Z"/><path d="M13 28 H7 V36 H13"/><path d="M21 38 V50 H28 V40"/>
+          <path d="M48 22 q8 10 0 20"/><path d="M54 18 q12 14 0 28"/>
+        </g></svg>
+        <div class="stext"><h3>Group posts</h3><p>Same offer across many groups. The beginner workhorse.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">03</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><circle cx="25" cy="32" r="15"/><circle cx="39" cy="32" r="15"/></g><g class="fillgold"><circle cx="32" cy="32" r="3"/></g></svg>
+        <div class="stext"><h3>Partner up</h3><p>Use someone else's audience. Pay-per-close or split.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">04</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><path d="M12 44 L17 21 L28 34 L34 18 L40 34 L51 21 L56 44 Z"/><line x1="13" y1="49" x2="55" y2="49"/></g><g class="fillgold"><circle cx="17" cy="21" r="2.6"/><circle cx="34" cy="18" r="2.6"/><circle cx="51" cy="21" r="2.6"/></g></svg>
+        <div class="stext"><h3>Own a group</h3><p>Build it, rule it, sell to it. The long game.</p></div>
+      </div>
+
     </div>
     <span class="sub">Different effort curves. Same offer underneath.</span>
   </section>
@@ -400,34 +464,106 @@
   <section class="slide">
     <div class="kicker">Before any of the four</div>
     <h2>Step zero: a <span class="g">mini personal brand</span></h2>
-    <p class="lead">Every method below assumes people will check you. They will click your name, look at your profile, and decide in five seconds whether to reply. Give them a reason to. This is the same "look reputable" rule from the Foundation, applied to Facebook.</p>
-    <span class="sub">No profile, no replies. No replies, no calls.</span>
+    <p class="lead">Every method below assumes people will check you. They click your name, look at your profile, and decide in five seconds whether to reply. Give them a reason to. The same "look reputable" rule from the Foundation, applied to Facebook.</p>
+    <div class="diagram sm">
+      <svg viewBox="0 0 820 420" aria-hidden="true">
+        <!-- profile card -->
+        <rect class="ink" x="150" y="40" width="320" height="348"/>
+        <line class="ink dim" x1="178" y1="118" x2="238" y2="52"/><line class="ink dim" x1="232" y1="118" x2="292" y2="52"/><line class="ink dim" x1="286" y1="118" x2="346" y2="52"/><line class="ink dim" x1="340" y1="118" x2="400" y2="52"/>
+        <line class="ink" x1="150" y1="130" x2="470" y2="130"/>
+        <circle class="ink" cx="310" cy="130" r="38"/>
+        <circle class="ink" cx="310" cy="120" r="12"/><path class="ink" d="M290 150 q20 -22 40 0"/>
+        <text class="lab" x="310" y="196" text-anchor="middle" font-size="29">Your name</text>
+        <text class="lab g" x="310" y="223" text-anchor="middle" font-size="23">the [niche] website guy</text>
+        <line class="ink dim" x1="196" y1="244" x2="424" y2="244"/>
+        <rect class="ink" x="180" y="270" width="80" height="80"/><path class="ink" d="M196 312 l12 12 l20 -24"/>
+        <rect class="ink" x="270" y="270" width="80" height="80"/><path class="fillgold" d="M310 282 l5 14 l15 0 l-12 9 l5 15 l-13 -9 l-13 9 l5 -15 l-12 -9 l15 0 z"/>
+        <rect class="ink" x="360" y="270" width="80" height="80"/><path class="ink" d="M374 336 l16 -22 l12 14 l10 -12 l12 20"/>
+        <text class="lab d" x="310" y="376" text-anchor="middle" font-size="19">proof posts</text>
+        <!-- eye / 5 second glance -->
+        <path class="ink" d="M560 150 q44 -34 88 0 q-44 34 -88 0 Z"/>
+        <circle class="ink" cx="604" cy="150" r="12"/><circle class="fillgold" cx="604" cy="150" r="4.5"/>
+        <path class="ink dim" d="M556 172 q-44 28 -86 26"/><path class="ink dim" d="M470 196 l16 4 l-2 -16"/>
+        <text class="lab" x="620" y="214" text-anchor="middle" font-size="26">they check you</text>
+        <text class="lab g" x="620" y="246" text-anchor="middle" font-size="30">in 5 seconds</text>
+      </svg>
+    </div>
   </section>
 
   <!-- 5 WHAT THE PROFILE NEEDS -->
   <section class="slide">
     <div class="kicker">Five minute setup</div>
     <h2>What your profile <span class="g">needs</span></h2>
-    <ul>
-      <li><span class="n">01</span><span><b>The right profile.</b> Spin up a new one if your existing profile is full of family and high-school friends. Keep work clean.</span></li>
-      <li><span class="n">02</span><span><b>A banner</b> that signals what you do, the niche you serve, and your offer in one glance.</span></li>
-      <li><span class="n">03</span><span><b>A bio that says it plainly:</b> who you help, what you ship, how to book you.</span></li>
-      <li><span class="n">04</span><span><b>A professional headshot.</b> Real face, clear photo, good lighting. No avatars, no logos.</span></li>
-      <li><span class="n">05</span><span><b>A few proof posts.</b> Testimonials, results, website mock-ups, niche-specific tips. You do not need a daily cadence. You need to look real and competent.</span></li>
-    </ul>
+    <div class="diagram">
+      <svg viewBox="0 0 860 300" aria-hidden="true">
+        <line class="ink dim" x1="92" y1="116" x2="768" y2="116"/>
+        <!-- 1 profile -->
+        <circle class="ink" cx="92" cy="116" r="36"/>
+        <g class="ink"><circle cx="92" cy="108" r="11"/><path d="M75 134 q17 -18 34 0"/></g>
+        <circle class="fillgold" cx="118" cy="90" r="11"/><text class="lab" x="118" y="96" text-anchor="middle" font-size="16" fill="#0a0a0a">1</text>
+        <text class="lab" x="92" y="184" text-anchor="middle" font-size="25">Profile</text>
+        <text class="lab d" x="92" y="208" text-anchor="middle" font-size="18">kept clean</text>
+        <!-- 2 banner -->
+        <circle class="ink" cx="261" cy="116" r="36"/>
+        <g class="ink"><rect x="241" y="100" width="40" height="28"/><path d="M241 122 l11 -12 l9 8 l8 -10 l12 14"/><circle cx="252" cy="108" r="3"/></g>
+        <circle class="fillgold" cx="287" cy="90" r="11"/><text class="lab" x="287" y="96" text-anchor="middle" font-size="16" fill="#0a0a0a">2</text>
+        <text class="lab" x="261" y="184" text-anchor="middle" font-size="25">Banner</text>
+        <text class="lab d" x="261" y="208" text-anchor="middle" font-size="18">what you do</text>
+        <!-- 3 bio -->
+        <circle class="ink" cx="430" cy="116" r="36"/>
+        <g class="ink"><line x1="412" y1="104" x2="448" y2="104"/><line x1="412" y1="116" x2="448" y2="116"/><line x1="412" y1="128" x2="436" y2="128"/></g>
+        <circle class="fillgold" cx="456" cy="90" r="11"/><text class="lab" x="456" y="96" text-anchor="middle" font-size="16" fill="#0a0a0a">3</text>
+        <text class="lab" x="430" y="184" text-anchor="middle" font-size="25">Bio</text>
+        <text class="lab d" x="430" y="208" text-anchor="middle" font-size="18">who you help</text>
+        <!-- 4 headshot -->
+        <circle class="ink" cx="599" cy="116" r="36"/>
+        <g class="ink"><circle cx="599" cy="112" r="14"/><circle cx="599" cy="106" r="6"/><path d="M588 126 q11 -10 22 0"/></g>
+        <circle class="fillgold" cx="625" cy="90" r="11"/><text class="lab" x="625" y="96" text-anchor="middle" font-size="16" fill="#0a0a0a">4</text>
+        <text class="lab" x="599" y="184" text-anchor="middle" font-size="25">Headshot</text>
+        <text class="lab d" x="599" y="208" text-anchor="middle" font-size="18">real face</text>
+        <!-- 5 proof posts -->
+        <circle class="ink" cx="768" cy="116" r="36"/>
+        <path class="fillgold" d="M768 96 l6 14 l16 0 l-13 10 l5 15 l-14 -9 l-14 9 l5 -15 l-13 -10 l16 0 z"/>
+        <circle class="fillgold" cx="794" cy="90" r="11"/><text class="lab" x="794" y="96" text-anchor="middle" font-size="16" fill="#0a0a0a">5</text>
+        <text class="lab" x="768" y="184" text-anchor="middle" font-size="25">Proof posts</text>
+        <text class="lab d" x="768" y="208" text-anchor="middle" font-size="18">results</text>
+      </svg>
+    </div>
   </section>
 
   <!-- 6 METHOD 1 - DM OUTREACH INTRO -->
   <section class="slide">
     <div class="kicker">Method 01 · DM outreach</div>
     <h2>Hand-pick <span class="g">and DM</span></h2>
-    <p class="lead">Join the groups in your niche, find the businesses that fit your offer, review their site, then send a thoughtful message. Quality over blast. One person at a time.</p>
-    <div class="flow">
-      <span class="step"><b>Join</b> the group</span><span class="arr">→</span>
-      <span class="step"><b>Qualify</b> the business</span><span class="arr">→</span>
-      <span class="step"><b>Review</b> their site</span><span class="arr">→</span>
-      <span class="step"><b>Send</b> the DM</span><span class="arr">→</span>
-      <span class="step"><b>Book</b> the call</span>
+    <p class="lead">Quality over blast. One person at a time, the right people.</p>
+    <div class="diagram">
+      <svg viewBox="0 0 940 320" aria-hidden="true">
+        <!-- phone on the left -->
+        <rect class="ink" x="28" y="36" width="120" height="168" rx="18"/>
+        <rect class="ink dim" x="40" y="60" width="96" height="120"/>
+        <line class="ink" x1="64" y1="50" x2="112" y2="50"/>
+        <rect class="ink" x="50" y="72" width="64" height="20" rx="6"/>
+        <rect class="ink gold" x="62" y="102" width="58" height="22" rx="6"/>
+        <rect class="ink" x="50" y="134" width="46" height="18" rx="6"/>
+        <circle class="ink dim" cx="88" cy="192" r="5"/>
+        <!-- flow connectors with arrowheads -->
+        <path class="ink gold dash" d="M150 120 H214"/><path class="ink gold" d="M208 114 L216 120 L208 126"/>
+        <path class="ink gold dash" d="M286 120 H372"/><path class="ink gold" d="M366 114 L374 120 L366 126"/>
+        <path class="ink gold dash" d="M446 120 H532"/><path class="ink gold" d="M526 114 L534 120 L526 126"/>
+        <path class="ink gold dash" d="M606 120 H692"/><path class="ink gold" d="M686 114 L694 120 L686 126"/>
+        <path class="ink gold dash" d="M766 120 H852"/><path class="ink gold" d="M846 114 L854 120 L846 126"/>
+        <!-- numbered steps in a line -->
+        <circle class="fillgold" cx="250" cy="120" r="32"/><text class="lab" x="250" y="132" text-anchor="middle" font-size="32" fill="#0a0a0a">1</text>
+        <text class="lab" x="250" y="184" text-anchor="middle" font-size="26">Join</text><text class="lab d" x="250" y="208" text-anchor="middle" font-size="18">the group</text>
+        <circle class="fillgold" cx="410" cy="120" r="32"/><text class="lab" x="410" y="132" text-anchor="middle" font-size="32" fill="#0a0a0a">2</text>
+        <text class="lab" x="410" y="184" text-anchor="middle" font-size="26">Qualify</text><text class="lab d" x="410" y="208" text-anchor="middle" font-size="18">the business</text>
+        <circle class="fillgold" cx="570" cy="120" r="32"/><text class="lab" x="570" y="132" text-anchor="middle" font-size="32" fill="#0a0a0a">3</text>
+        <text class="lab" x="570" y="184" text-anchor="middle" font-size="26">Review</text><text class="lab d" x="570" y="208" text-anchor="middle" font-size="18">their site</text>
+        <circle class="fillgold" cx="730" cy="120" r="32"/><text class="lab" x="730" y="132" text-anchor="middle" font-size="32" fill="#0a0a0a">4</text>
+        <text class="lab" x="730" y="184" text-anchor="middle" font-size="26">Send</text><text class="lab d" x="730" y="208" text-anchor="middle" font-size="18">the DM</text>
+        <circle class="fillgold" cx="890" cy="120" r="32"/><text class="lab" x="890" y="132" text-anchor="middle" font-size="32" fill="#0a0a0a">5</text>
+        <text class="lab g" x="890" y="184" text-anchor="middle" font-size="26">Book</text><text class="lab d" x="890" y="208" text-anchor="middle" font-size="18">the call</text>
+      </svg>
     </div>
   </section>
 
@@ -444,7 +580,28 @@
     <div class="kicker">Method 02 · Group posts</div>
     <h2>The <span class="g">beginner workhorse</span></h2>
     <p class="lead">This is what builds your first steady run of recurring clients. You post the same offer (or close variations of it) across many relevant groups, then DM the people who comment. Same day, every time.</p>
-    <span class="sub">Your first 5 to 10 customers come from here, faster than from anywhere else.</span>
+    <div class="diagram sm">
+      <svg viewBox="0 0 820 400" aria-hidden="true">
+        <!-- megaphone -->
+        <path class="ink thick" d="M120 168 L250 128 V272 L120 232 Z"/>
+        <path class="ink" d="M120 186 H100 V214 H120"/>
+        <path class="ink" d="M150 234 V270 H172 V246"/>
+        <path class="ink dim" d="M264 158 q18 42 0 84"/>
+        <path class="ink dim" d="M286 144 q26 56 0 112"/>
+        <!-- dashed broadcast arrows -->
+        <path class="ink gold dash" d="M258 180 Q360 130 442 132"/>
+        <path class="ink gold dash" d="M262 200 Q420 200 596 156"/>
+        <path class="ink gold dash" d="M260 220 Q380 270 452 286"/>
+        <path class="ink gold dash" d="M264 210 Q470 290 612 290"/>
+        <!-- group bubbles (circle of people) -->
+        <g class="ink"><circle cx="478" cy="126" r="30"/></g><g class="fillgold"><circle cx="468" cy="120" r="4"/><circle cx="488" cy="120" r="4"/><circle cx="478" cy="134" r="4"/></g>
+        <g class="ink"><circle cx="638" cy="140" r="30"/></g><g class="fillgold"><circle cx="628" cy="134" r="4"/><circle cx="648" cy="134" r="4"/><circle cx="638" cy="148" r="4"/></g>
+        <g class="ink"><circle cx="486" cy="296" r="30"/></g><g class="fillgold"><circle cx="476" cy="290" r="4"/><circle cx="496" cy="290" r="4"/><circle cx="486" cy="304" r="4"/></g>
+        <g class="ink"><circle cx="646" cy="296" r="30"/></g><g class="fillgold"><circle cx="636" cy="290" r="4"/><circle cx="656" cy="290" r="4"/><circle cx="646" cy="304" r="4"/></g>
+        <!-- caption -->
+        <text class="lab" x="410" y="384" text-anchor="middle" font-size="29">One post, posted across <tspan class="au">every group</tspan></text>
+      </svg>
+    </div>
   </section>
 
   <!-- 9 THE POST THAT WORKS -->
@@ -452,7 +609,26 @@
     <div class="kicker">The template</div>
     <h2>The <span class="g">post itself</span></h2>
     <p class="lead">Big bold colored background. Short hook. Specific number. Clear deliverable. Risk reversal baked in. The whole post fits in a single thumb scroll, which is the only thing standing between a yes and a swipe.</p>
-    <div class="quote">"Looking for <span class="g">3 contractors</span> in need of a free website build. We are expanding our portfolio. I promise you will love the site."</div>
+    <div class="diagram sm">
+      <svg viewBox="0 0 820 410" aria-hidden="true">
+        <!-- post card -->
+        <rect class="ink" x="150" y="22" width="520" height="330"/>
+        <!-- poster row -->
+        <circle class="ink" cx="186" cy="58" r="18"/><circle class="ink" cx="186" cy="52" r="7"/><path class="ink" d="M174 74 q12 -13 24 0"/>
+        <text class="lab" x="216" y="54" font-size="23">You</text>
+        <text class="lab d" x="216" y="76" font-size="17">just now · your niche group</text>
+        <!-- bold post block -->
+        <rect class="ink" x="172" y="100" width="476" height="158"/>
+        <text class="lab" x="410" y="148" text-anchor="middle" font-size="33">Looking for <tspan class="au">3 contractors</tspan></text>
+        <text class="lab" x="410" y="190" text-anchor="middle" font-size="33">in need of a <tspan class="au">FREE</tspan> website</text>
+        <text class="lab" x="410" y="232" text-anchor="middle" font-size="27">Expanding our portfolio. You'll love it.</text>
+        <!-- reactions -->
+        <path class="fillgold" d="M196 300 c-8 -10 -22 -2 -16 8 c3 6 16 14 16 14 c0 0 13 -8 16 -14 c6 -10 -8 -18 -16 -8 z"/>
+        <text class="lab" x="224" y="306" font-size="22"><tspan class="au">32 comments</tspan></text>
+        <path class="ink dim" d="M392 300 H470"/><path class="ink dim" d="M458 292 l14 8 l-14 8"/>
+        <text class="lab" x="556" y="306" text-anchor="middle" font-size="22">DM every one</text>
+      </svg>
+    </div>
     <span class="sub">Plug in your niche. Keep it short. Make the offer hard to ignore.</span>
   </section>
 
@@ -460,13 +636,20 @@
   <section class="slide">
     <div class="kicker">How the offer monetises</div>
     <h2>Free build → <span class="g">monthly</span> subscription</h2>
-    <p class="lead">When you close someone from a post, you put them on a 14 to 30 day free trial. After the trial they continue on a recurring plan, typically $80 to $100 per month for a hosted site. Same offer logic as the live-homepage close: remove all risk to make the yes easy.</p>
-    <div class="flow">
-      <span class="step"><b>Group post</b></span><span class="arr">→</span>
-      <span class="step"><b>Comment</b></span><span class="arr">→</span>
-      <span class="step"><b>DM</b></span><span class="arr">→</span>
-      <span class="step"><b>Trial</b></span><span class="arr">→</span>
-      <span class="step"><b>Recurring</b></span>
+    <p class="lead">Close them on a 14 to 30 day free trial. After the trial they continue on a recurring plan, typically $80 to $100 per month for a hosted site. Same logic as the live-homepage close: remove the risk to make the yes easy.</p>
+    <div class="diagram sm">
+      <svg viewBox="0 0 820 512" aria-hidden="true">
+        <path class="ink thick" d="M150 50 H670 L470 300 V338 H350 V300 Z"/>
+        <text class="lab" x="410" y="98" text-anchor="middle" font-size="40">Group post</text>
+        <line class="ink dim" x1="222" y1="120" x2="598" y2="120"/>
+        <text class="lab" x="410" y="160" text-anchor="middle" font-size="33">Comment</text>
+        <text class="lab" x="410" y="206" text-anchor="middle" font-size="33">DM the commenter</text>
+        <text class="lab" x="410" y="262" text-anchor="middle" font-size="31">14 to 30 day trial</text>
+        <path class="ink dash" d="M410 344 V392"/>
+        <path class="ink" d="M398 380 L410 396 L422 380"/>
+        <g class="ink gold"><circle cx="410" cy="424" r="15"/><path d="M390 462 q20 -24 40 0"/></g>
+        <text class="lab g" x="410" y="500" text-anchor="middle" font-size="34">Recurring client</text>
+      </svg>
     </div>
   </section>
 
@@ -474,12 +657,33 @@
   <section class="slide">
     <div class="kicker">What goes wrong</div>
     <h2>You're at <span class="g">Facebook's mercy</span></h2>
-    <ul>
-      <li><span class="n">→</span><span><b>Admin gates.</b> Many posts get blocked before they go live. Most niche groups have post-approval queues run by the owner.</span></li>
-      <li><span class="n">→</span><span><b>Throttling.</b> When too many of your posts get removed, Facebook quietly lowers your reach across the whole platform.</span></li>
-      <li><span class="n">→</span><span><b>Silent DM failures.</b> When a post pops off, your messages to non-friends sometimes silently fail to deliver. Whole sales cycles die quietly.</span></li>
-      <li><span class="n">→</span><span><b>Account warm-up matters.</b> Do not burn a fresh profile by spamming 20 groups on day one. Ease in.</span></li>
-    </ul>
+    <div class="sgrid">
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><line x1="16" y1="22" x2="16" y2="52"/><line x1="12" y1="52" x2="20" y2="52"/><line x1="16" y1="26" x2="54" y2="16"/><line x1="26" y1="24" x2="29" y2="33"/><line x1="40" y1="20" x2="43" y2="29"/></g></svg>
+        <div class="stext"><h3>Admin gates</h3><p>Most groups hold posts for owner approval.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><rect x="8" y="14" width="8" height="36"/><rect x="22" y="24" width="8" height="26"/><rect x="36" y="32" width="8" height="18"/><rect x="50" y="40" width="8" height="10"/><path d="M14 56 L54 56"/><path d="M48 52 L58 58 L48 60"/></g></svg>
+        <div class="stext"><h3>Throttling</h3><p>Too many removals and your reach quietly drops.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><path d="M10 16 H46 a4 4 0 0 1 4 4 V36 a4 4 0 0 1 -4 4 H26 L16 48 V40 H10 a4 4 0 0 1 -4 -4 V20 a4 4 0 0 1 4 -4 Z"/></g><g class="ink gold"><line x1="40" y1="40" x2="58" y2="58"/><line x1="58" y1="40" x2="40" y2="58"/></g></svg>
+        <div class="stext"><h3>Silent DM fails</h3><p>Messages to non-friends can quietly not deliver.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><path d="M32 8 c10 12 16 18 16 30 a16 16 0 0 1 -32 0 c0 -8 4 -12 8 -18 c2 6 6 8 8 4 c2 -4 -2 -10 -8 -16 z"/></g><g class="ink gold"><path d="M32 30 c5 6 8 9 8 15 a8 8 0 0 1 -16 0 c0 -5 4 -9 8 -15 z"/></g></svg>
+        <div class="stext"><h3>Warm up first</h3><p>Do not spam 20 groups on a fresh profile. Ease in.</p></div>
+      </div>
+
+    </div>
     <span class="sub">Hit or miss is the nature of the channel. Build for it.</span>
   </section>
 
@@ -496,16 +700,41 @@
     <div class="kicker">Method 03 · Partner up</div>
     <h2>Partner with <span class="g">group owners</span></h2>
     <p class="lead">Most owners of niche groups are not monetising them. They built an audience and never figured out the offer. You are the offer. They bring the reach, you bring the close.</p>
-    <span class="sub">Find groups in your niche. Reach out to the owner with a clean proposal.</span>
+    <div class="diagram sm">
+      <svg viewBox="0 0 820 360" aria-hidden="true">
+        <circle class="ink thick" cx="335" cy="172" r="138"/>
+        <circle class="ink thick" cx="485" cy="172" r="138"/>
+        <text class="lab" x="250" y="166" text-anchor="middle" font-size="29">Their</text>
+        <text class="lab" x="250" y="196" text-anchor="middle" font-size="29">reach</text>
+        <text class="lab" x="570" y="166" text-anchor="middle" font-size="29">Your</text>
+        <text class="lab" x="570" y="196" text-anchor="middle" font-size="29">offer</text>
+        <path class="fillgold" d="M410 120 l6 16 l17 0 l-14 11 l6 17 l-15 -11 l-15 11 l6 -17 l-14 -11 l17 0 z"/>
+        <text class="lab g" x="410" y="206" text-anchor="middle" font-size="28">Deals</text>
+        <text class="lab" x="410" y="338" text-anchor="middle" font-size="27">Their reach + your offer = <tspan class="au">booked calls</tspan></text>
+      </svg>
+    </div>
   </section>
 
   <!-- 14 DEAL STRUCTURES -->
   <section class="slide">
     <div class="kicker">Two ways to split it</div>
     <h2>How the <span class="g">deal</span> is built</h2>
-    <div class="grid two">
-      <div class="card"><span class="tag">Option A</span><h3>Pay-per-close</h3><p>Owner books or surfaces leads. You pay them a flat fee per closed deal. Clean, simple, results-aligned. Easy to track.</p></div>
-      <div class="card"><span class="tag">Option B</span><h3>Subscription split</h3><p>Owner gets a monthly cut of every recurring customer they bring you. E.g. $50/mo of a $200/mo plan. Long-term alignment, messier accounting.</p></div>
+    <div class="sgrid">
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">A</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><path d="M14 30 l10 10 l24 -24"/><circle cx="44" cy="44" r="13"/></g><g class="ink gold"><path d="M44 38 v12 M40 41 h8 a3 3 0 0 1 0 5 h-8"/></g></svg>
+        <div class="stext"><h3>Pay-per-close</h3><p>A flat fee for every deal you close. Clean and easy to track.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">B</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><path d="M18 24 a18 18 0 1 1 -2 18"/><path d="M18 14 v12 h12"/><line x1="32" y1="32" x2="32" y2="32"/></g><g class="ink gold"><line x1="32" y1="20" x2="32" y2="44"/></g></svg>
+        <div class="stext"><h3>Subscription split</h3><p>Owner takes a monthly cut of every recurring client they send.</p></div>
+      </div>
+
     </div>
     <span class="sub">An 80,000-member group can book all your calls. You just need to close.</span>
   </section>
@@ -522,20 +751,66 @@
   <section class="slide">
     <div class="kicker">Method 04 · Own the audience</div>
     <h2>Start your <span class="g">own</span> group</h2>
-    <p class="lead">The long game. A niche-specific group where you own the rules. You decide who can post and who gets blocked. Drip Jobs (a painter SaaS) runs a 250,000-member group of painters they sell software to. Inbound leads, forever.</p>
-    <span class="sub">Slowest to build. Largest moat once built.</span>
+    <p class="lead">The long game. A niche group where you own the rules and decide who gets blocked. Drip Jobs (a painter SaaS) runs a 250,000-member group they sell to. Inbound leads, forever.</p>
+    <div class="diagram sm">
+      <svg viewBox="0 0 820 480" aria-hidden="true">
+        <circle class="ink thick" cx="370" cy="232" r="178"/>
+        <circle class="ink dim dash" cx="370" cy="232" r="156"/>
+        <g class="ink">
+          <circle cx="292" cy="176" r="7"/><line x1="292" y1="183" x2="292" y2="204"/><line x1="281" y1="192" x2="303" y2="192"/><line x1="292" y1="204" x2="283" y2="222"/><line x1="292" y1="204" x2="301" y2="222"/>
+          <circle cx="450" cy="176" r="7"/><line x1="450" y1="183" x2="450" y2="204"/><line x1="439" y1="192" x2="461" y2="192"/><line x1="450" y1="204" x2="441" y2="222"/><line x1="450" y1="204" x2="459" y2="222"/>
+          <circle cx="288" cy="296" r="7"/><line x1="288" y1="303" x2="288" y2="324"/><line x1="277" y1="312" x2="299" y2="312"/><line x1="288" y1="324" x2="279" y2="342"/><line x1="288" y1="324" x2="297" y2="342"/>
+          <circle cx="452" cy="296" r="7"/><line x1="452" y1="303" x2="452" y2="324"/><line x1="441" y1="312" x2="463" y2="312"/><line x1="452" y1="324" x2="443" y2="342"/><line x1="452" y1="324" x2="461" y2="342"/>
+        </g>
+        <g class="ink gold">
+          <circle cx="370" cy="226" r="8"/>
+          <line x1="370" y1="234" x2="370" y2="262"/><line x1="356" y1="244" x2="384" y2="244"/>
+          <line x1="370" y1="262" x2="359" y2="284"/><line x1="370" y1="262" x2="381" y2="284"/>
+          <line x1="384" y1="206" x2="384" y2="226"/><path d="M384 207 L410 215 L384 225 Z"/>
+        </g>
+        <text class="lab g" x="370" y="322" text-anchor="middle" font-size="30">You</text>
+        <g class="ink dim">
+          <circle cx="690" cy="196" r="7"/><line x1="690" y1="203" x2="690" y2="224"/><line x1="679" y1="212" x2="701" y2="212"/><line x1="690" y1="224" x2="681" y2="242"/><line x1="690" y1="224" x2="699" y2="242"/>
+          <circle cx="702" cy="296" r="7"/><line x1="702" y1="303" x2="702" y2="324"/><line x1="691" y1="312" x2="713" y2="312"/><line x1="702" y1="324" x2="693" y2="342"/><line x1="702" y1="324" x2="711" y2="342"/>
+        </g>
+        <g class="ink thick"><line x1="648" y1="176" x2="744" y2="330"/><line x1="744" y1="176" x2="648" y2="330"/></g>
+        <text class="lab d" x="696" y="372" text-anchor="middle" font-size="25">Competitors blocked</text>
+        <text class="lab" x="370" y="462" text-anchor="middle" font-size="30">Every new member = a free, warm lead</text>
+      </svg>
+    </div>
   </section>
 
   <!-- 17 WHY OWNING WINS -->
   <section class="slide">
     <div class="kicker">The compound effect</div>
-    <h2>One group = <span class="g">infinite</span> at-bats</h2>
-    <ul>
-      <li><span class="n">→</span><span><b>Sell on your terms.</b> Promote your offer to your own audience as often as makes sense.</span></li>
-      <li><span class="n">→</span><span><b>Block competitor posts.</b> Force approval on anything that smells like outreach. Keep the group clean.</span></li>
-      <li><span class="n">→</span><span><b>Free warm leads.</b> Every new member is a pre-qualified, in-niche prospect at zero CAC.</span></li>
-      <li><span class="n">→</span><span><b>The group becomes the moat.</b> Over time, it stops being a channel and starts being the product distribution itself.</span></li>
-    </ul>
+    <h2>Own it once.<br><span class="g">Sell forever.</span></h2>
+    <div class="sgrid">
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><path d="M12 28 L42 18 V46 L12 36 Z"/><path d="M12 28 H6 V36 H12"/><path d="M20 38 V50 H27 V40"/></g><g class="ink gold"><path d="M46 30 l5 6 l11 -12"/></g></svg>
+        <div class="stext"><h3>Sell on your terms</h3><p>Promote your offer to your own audience whenever.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><circle cx="32" cy="32" r="22"/></g><g class="ink gold"><line x1="17" y1="17" x2="47" y2="47"/></g></svg>
+        <div class="stext"><h3>Block competitors</h3><p>Approve every post. Keep outreach out of your group.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><path d="M18 16 V34 a14 14 0 0 0 28 0 V16"/><line x1="14" y1="16" x2="22" y2="16"/><line x1="42" y1="16" x2="50" y2="16"/></g><g class="fillgold"><circle cx="32" cy="50" r="3"/><circle cx="24" cy="54" r="2.5"/><circle cx="40" cy="54" r="2.5"/></g></svg>
+        <div class="stext"><h3>Free warm leads</h3><p>Every new member is a pre-qualified prospect at zero cost.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><circle cx="32" cy="32" r="22"/><circle cx="32" cy="32" r="12"/></g><g class="fillgold"><circle cx="32" cy="32" r="4"/></g></svg>
+        <div class="stext"><h3>Becomes the moat</h3><p>Over time the group itself is your distribution.</p></div>
+      </div>
+
+    </div>
     <span class="sub">This is what acquisition infrastructure looks like.</span>
   </section>
 
@@ -543,11 +818,36 @@
   <section class="slide">
     <div class="kicker">Why Facebook groups</div>
     <h2>The <span class="g">pros</span></h2>
-    <div class="grid two">
-      <div class="card"><span class="tag">Pro 01</span><h3>Free acquisition</h3><p>No ad spend. Pure organic. You pay in time and reps, not media.</p></div>
-      <div class="card"><span class="tag">Pro 02</span><h3>No dialing required</h3><p>Skip cold call volume entirely if you do not have hours a day to be on the phone.</p></div>
-      <div class="card"><span class="tag">Pro 03</span><h3>Inbound at scale</h3><p>Partner deals and your own group produce inbound leads without paid traffic.</p></div>
-      <div class="card"><span class="tag">Pro 04</span><h3>Beginner-friendly</h3><p>Fastest path to the first 5 to 10 customers without an existing track record.</p></div>
+    <div class="sgrid">
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">01</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><circle cx="32" cy="32" r="22"/><path d="M32 20 v24 M27 24 h8 a4 4 0 0 1 0 8 h-6 a4 4 0 0 0 0 8 h9"/></g><g class="ink gold"><line x1="16" y1="48" x2="48" y2="16"/></g></svg>
+        <div class="stext"><h3>Free</h3><p>No ad spend. You pay in time and reps, not media.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">02</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><path d="M16 14 q-4 0 -4 5 c0 18 14 32 32 32 q5 0 5 -4 v-7 l-10 -4 l-4 5 q-9 -4 -13 -13 l5 -4 l-4 -10 z"/></g><g class="ink gold"><line x1="14" y1="14" x2="50" y2="50"/></g></svg>
+        <div class="stext"><h3>No dialing</h3><p>Skip cold call volume if you cannot be on the phone all day.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">03</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="fillgold"><circle cx="32" cy="32" r="5"/></g><g class="ink"><path d="M32 8 V20 M30 16 l2 4 l2 -4"/><path d="M32 56 V44 M30 48 l2 -4 l2 4"/><path d="M8 32 H20 M16 30 l4 2 l-4 2"/><path d="M56 32 H44 M48 30 l-4 2 l4 2"/></g></svg>
+        <div class="stext"><h3>Inbound at scale</h3><p>Partners and your own group bring leads without paid traffic.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">04</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><path d="M32 54 V32"/><path d="M32 36 c-12 0 -18 -8 -18 -18 c12 0 18 8 18 18 z"/><path d="M32 30 c10 0 15 -7 15 -15 c-10 0 -15 7 -15 15 z"/></g><g class="fillgold"><circle cx="32" cy="54" r="3"/></g></svg>
+        <div class="stext"><h3>Beginner-friendly</h3><p>Fastest path to the first 5 to 10 with no track record.</p></div>
+      </div>
+
     </div>
   </section>
 
@@ -555,11 +855,36 @@
   <section class="slide">
     <div class="kicker">Eyes open</div>
     <h2>The <span class="g">cons</span></h2>
-    <div class="grid two">
-      <div class="card"><span class="tag">Con 01</span><h3>Price-sensitive</h3><p>Group members tend to shop on price. Plan your offer (and your stack) so you can win on value at a fair price.</p></div>
-      <div class="card"><span class="tag">Con 02</span><h3>Platform risk</h3><p>You are renting the audience. Facebook can throttle posts or DMs at any time, with no warning.</p></div>
-      <div class="card"><span class="tag">Con 03</span><h3>Solo ceiling</h3><p>Methods 1 and 2 cap quickly. There is a real limit to how many posts and DMs one person can run.</p></div>
-      <div class="card"><span class="tag">Con 04</span><h3>Need to embed</h3><p>Real results come from being a regular contributor, not a tourist parachuting in with offers.</p></div>
+    <div class="sgrid">
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">01</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><path d="M34 10 H16 a4 4 0 0 0 -4 4 V32 L36 56 L56 36 L34 14 Z"/><circle cx="24" cy="22" r="3"/></g><g class="ink gold"><path d="M48 44 v14 M43 53 l5 6 l5 -6"/></g></svg>
+        <div class="stext"><h3>Price-sensitive</h3><p>Members shop on price. Win on value at a fair price.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">02</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><path d="M32 10 L56 52 H8 Z"/></g><g class="ink gold"><line x1="32" y1="26" x2="32" y2="40"/><circle cx="32" cy="46" r="1.5"/></g></svg>
+        <div class="stext"><h3>Platform risk</h3><p>Facebook can throttle posts or DMs anytime, no warning.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">03</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink gold"><line x1="12" y1="16" x2="52" y2="16"/></g><g class="ink"><path d="M32 52 V24 M22 34 l10 -10 l10 10"/></g></svg>
+        <div class="stext"><h3>Solo ceiling</h3><p>Posts and DMs cap quickly for one person.</p></div>
+      </div>
+
+      <div class="scard">
+        <svg class="frame" viewBox="0 0 340 150" preserveAspectRatio="none"><rect class="ink" x="6" y="6" width="328" height="138"/></svg>
+        <span class="snum">04</span>
+        <svg class="sicon" viewBox="0 0 64 64"><g class="ink"><circle cx="32" cy="32" r="22"/></g><g class="ink"><circle cx="22" cy="30" r="4"/><circle cx="42" cy="30" r="4"/></g><g class="fillgold"><circle cx="32" cy="34" r="4"/></g></svg>
+        <div class="stext"><h3>Need to embed</h3><p>Be a regular contributor, not a parachuting tourist.</p></div>
+      </div>
+
     </div>
   </section>
 
@@ -568,10 +893,22 @@
     <div class="kicker">How to break the ceiling</div>
     <h2>Group <span class="g">infiltration</span> = scale</h2>
     <p class="lead">Methods 1 and 2 plateau quickly. Real scale comes from partnerships or owning the group. Pick a partner play first because it is faster, then start growing your own group in parallel for the moat.</p>
-    <div class="flow">
-      <span class="step"><b>Group posts</b><br>cash flow</span><span class="arr">→</span>
-      <span class="step"><b>Partner</b><br>volume</span><span class="arr">→</span>
-      <span class="step"><b>Own group</b><br>moat</span>
+    <div class="diagram sm">
+      <svg viewBox="0 0 820 380" aria-hidden="true">
+        <!-- staircase -->
+        <path class="ink thick" d="M90 350 V296 H318 V232 H536 V160 H754 V350 Z"/>
+        <!-- rising arrow -->
+        <path class="ink gold" d="M150 330 L700 150"/><path class="ink gold" d="M672 146 L704 148 L692 178"/>
+        <!-- step labels -->
+        <text class="lab d" x="204" y="268" text-anchor="middle" font-size="22">cash flow</text>
+        <text class="lab" x="204" y="290" text-anchor="middle" font-size="27">Group posts</text>
+        <text class="lab d" x="427" y="204" text-anchor="middle" font-size="22">volume</text>
+        <text class="lab" x="427" y="226" text-anchor="middle" font-size="27">Partner</text>
+        <text class="lab d" x="645" y="120" text-anchor="middle" font-size="22">the moat</text>
+        <text class="lab g" x="645" y="148" text-anchor="middle" font-size="28">Own a group</text>
+        <!-- flag on top -->
+        <line class="ink gold" x1="726" y1="120" x2="726" y2="160"/><path class="fillgold" d="M726 122 l30 9 l-30 9 z"/>
+      </svg>
     </div>
     <span class="sub">Same "manual first, systemise later" law, applied to social.</span>
   </section>
@@ -592,13 +929,30 @@
   <section class="slide">
     <div class="kicker">Your move today</div>
     <h2>Action <span class="g">items</span></h2>
-    <ul>
-      <li><span class="n">01</span><span><b>Build the profile.</b> Banner, bio, headshot, three proof posts. Under one hour.</span></li>
-      <li><span class="n">02</span><span><b>Find 10 to 20 niche groups.</b> Log them in a sheet with member counts and posts per day.</span></li>
-      <li><span class="n">03</span><span><b>Write 3 versions</b> of the group post with different hooks. Schedule one per day across 5 groups.</span></li>
-      <li><span class="n">04</span><span><b>DM every commenter</b> the same day. Sell the call. Book the call.</span></li>
-      <li><span class="n">05</span><span><b>Shortlist 5 group owners</b> to approach for a partnership next week. Lead with the member benefit.</span></li>
-    </ul>
+    <div class="diagram">
+      <svg viewBox="0 0 860 400" aria-hidden="true">
+        <!-- 1 -->
+        <rect class="ink" x="60" y="30" width="40" height="40"/><path class="ink gold" d="M69 50 l8 9 l16 -20"/>
+        <text class="lab" x="120" y="50" font-size="30">Build the profile</text>
+        <text class="lab d" x="120" y="74" font-size="20">banner, bio, headshot, 3 posts</text>
+        <!-- 2 -->
+        <rect class="ink" x="60" y="104" width="40" height="40"/><path class="ink gold" d="M69 124 l8 9 l16 -20"/>
+        <text class="lab" x="120" y="124" font-size="30">Find 10 to 20 groups</text>
+        <text class="lab d" x="120" y="148" font-size="20">log them in a sheet</text>
+        <!-- 3 -->
+        <rect class="ink" x="60" y="178" width="40" height="40"/><path class="ink gold" d="M69 198 l8 9 l16 -20"/>
+        <text class="lab" x="120" y="198" font-size="30">Write 3 post versions</text>
+        <text class="lab d" x="120" y="222" font-size="20">one a day, across 5 groups</text>
+        <!-- 4 -->
+        <rect class="ink" x="60" y="252" width="40" height="40"/><path class="ink gold" d="M69 272 l8 9 l16 -20"/>
+        <text class="lab" x="120" y="272" font-size="30">DM every commenter</text>
+        <text class="lab d" x="120" y="296" font-size="20">same day, sell the call, book the call</text>
+        <!-- 5 -->
+        <rect class="ink" x="60" y="326" width="40" height="40"/><path class="ink gold" d="M69 346 l8 9 l16 -20"/>
+        <text class="lab" x="120" y="346" font-size="30">Shortlist 5 group owners</text>
+        <text class="lab d" x="120" y="370" font-size="20">for a partnership next week</text>
+      </svg>
+    </div>
   </section>
 
   <!-- 23 CLOSING -->
